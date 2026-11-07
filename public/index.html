@@ -867,6 +867,220 @@
         transition: none !important;
       }
     }
+  
+    /* =========================================================================
+       3D CIRCULAR ORBITAL SPECIALISTS SLIDER (SDO LUXURY STYLING)
+    ========================================================================= */
+    .circular-stage {
+      perspective: 1600px;
+      transform-style: preserve-3d;
+      position: relative;
+      height: 590px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      user-select: none;
+    }
+
+    .carousel-3d-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease-out;
+    }
+
+    .doctor-3d-slot {
+      position: absolute;
+      width: 370px;
+      max-width: 86vw;
+      height: 520px;
+      transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.25, 1), opacity 0.6s ease, filter 0.6s ease;
+      will-change: transform, opacity, filter;
+      transform-style: preserve-3d;
+    }
+
+    /* Center Active Doctor Card Glow */
+    .doctor-3d-slot.is-center .doctor-orbit-card {
+      border-color: rgba(56, 189, 248, 0.85) !important;
+      box-shadow: 0 28px 60px -12px rgba(0, 0, 0, 0.85), 0 0 40px 0 rgba(56, 189, 248, 0.35) !important;
+    }
+
+    /* Background Left/Right Cards in Circular Arc */
+    .doctor-3d-slot.is-side .doctor-orbit-card {
+      border-color: rgba(255, 255, 255, 0.16) !important;
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.75) !important;
+    }
+    .doctor-3d-slot.is-side:hover .doctor-orbit-card {
+      border-color: rgba(56, 189, 248, 0.6) !important;
+    }
+
+    /* Glowing Circular Orbital Rings Behind Cards */
+    .orbital-ring-container {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transform-style: preserve-3d;
+      z-index: 1;
+    }
+
+    .orbital-ring-main {
+      width: 820px;
+      height: 820px;
+      max-width: 92vw;
+      max-height: 92vw;
+      border-radius: 9999px;
+      border: 1.5px dashed rgba(56, 189, 248, 0.32);
+      box-shadow: inset 0 0 80px rgba(56, 189, 248, 0.08), 0 0 60px rgba(56, 189, 248, 0.12);
+      transform: rotateX(68deg) translateZ(-120px);
+      transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.25, 1);
+    }
+
+    .orbital-ring-inner {
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      max-width: 75vw;
+      max-height: 75vw;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(10, 30, 52, 0) 70%);
+      transform: rotateX(68deg) translateZ(-150px);
+    }
+
+    /* Custom Cursor Follower Badge on Stage */
+    #cursorFollower {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 60;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.75);
+      transition: opacity 0.2s ease, transform 0.18s ease, background-color 0.2s ease;
+    }
+    #cursorFollower.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    #cursorFollower.dragging {
+      transform: translate(-50%, -50%) scale(0.88);
+      background-color: #0070D2;
+      color: #FFFFFF;
+    }
+
+    .doctor-orbit-card {
+      position: relative;
+      height: 520px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #0E2740;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.45s ease;
+      user-select: none;
+      transform-style: preserve-3d;
+    }
+
+    .doctor-orbit-card:hover,
+    .doctor-orbit-card.is-expanded {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.9);
+      box-shadow: 0 25px 50px -12px rgba(10, 30, 52, 0.65), 0 0 32px 0 rgba(56, 189, 248, 0.25);
+    }
+
+    .doctor-orbit-card .doctor-img {
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+    }
+
+    .doctor-orbit-card:hover .doctor-img,
+    .doctor-orbit-card.is-expanded .doctor-img {
+      transform: scale(1.08);
+      filter: brightness(0.28) contrast(1.15) saturate(0.9);
+    }
+
+    .doctor-orbit-card .initial-info {
+      transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .doctor-orbit-card:hover .initial-info,
+    .doctor-orbit-card.is-expanded .initial-info {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
+
+    .doctor-orbit-card .hover-drawer {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      background: linear-gradient(
+        180deg,
+        rgba(10, 30, 52, 0.4) 0%,
+        rgba(15, 37, 55, 0.94) 28%,
+        rgba(7, 22, 38, 0.99) 100%
+      );
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transform: translateY(101%);
+      opacity: 0;
+      transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease;
+      z-index: 20;
+    }
+
+    .doctor-orbit-card:hover .hover-drawer,
+    .doctor-orbit-card.is-expanded .hover-drawer {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .doctor-orbit-card .hover-drawer .stagger-item {
+      transform: translateY(18px);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+
+    .doctor-orbit-card:hover .hover-drawer .stagger-1,
+    .doctor-orbit-card.is-expanded .hover-drawer .stagger-1 {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: 0.05s;
+    }
+    .doctor-orbit-card:hover .hover-drawer .stagger-2,
+    .doctor-orbit-card.is-expanded .hover-drawer .stagger-2 {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: 0.1s;
+    }
+    .doctor-orbit-card:hover .hover-drawer .stagger-3,
+    .doctor-orbit-card.is-expanded .hover-drawer .stagger-3 {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: 0.15s;
+    }
+    .doctor-orbit-card:hover .hover-drawer .stagger-4,
+    .doctor-orbit-card.is-expanded .hover-drawer .stagger-4 {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: 0.2s;
+    }
+    .doctor-orbit-card:hover .hover-drawer .stagger-5,
+    .doctor-orbit-card.is-expanded .hover-drawer .stagger-5 {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: 0.25s;
+    }
+
   </style>
 </head>
 <body class="p-0 m-0 antialiased selection:bg-[#0070D2] selection:text-white bg-white w-full">
@@ -1164,61 +1378,96 @@
            5. ASYMMETRIC SPLIT CAROUSEL — "MEET THE MINDS BEHIND YOUR SMILE"
               All 6 Specialists from sdoClinicData.doctors
       ====================================================================== -->
-      <section id="specialists" class="snap-section py-14 sm:py-16 px-4 sm:px-8 lg:px-10 border-t border-slate-100 bg-slate-50/60 overflow-hidden w-full" data-section-name="Specialists">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <section id="specialists" class="snap-section py-14 sm:py-16 px-4 sm:px-8 lg:px-10 border-t border-slate-100 bg-[#08182B] text-white overflow-hidden w-full select-none" data-section-name="Specialists">
+        <!-- Ambient Radial Glow Behind Stage -->
+        <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div class="w-[850px] h-[450px] bg-sky-500/10 blur-[140px] rounded-full"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10">
           
-          <!-- Left Column (4 cols) -->
-          <div class="lg:col-span-4 flex flex-col justify-between scroll-reveal-left stagger-1">
+          <!-- Section Header + Filter Pills + Slider Controls -->
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-6 gap-6">
             <div>
-              <span id="specEyebrow" class="text-[11px] uppercase tracking-[0.2em] text-slate-400 font-semibold block mb-3">
-                SPECIALISTS • BOARD-CERTIFIED FACULTY
-              </span>
-
-              <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#0F2537] leading-[1.15] mb-4">
-                <span id="specHeadlinePart1">Meet the minds</span>
-                <span class="inline-flex items-center -space-x-2 overflow-hidden align-middle mx-1.5 py-0.5">
-                  <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="assets/sdo/doctor-snehal.webp" alt="Dr. Snehal" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}" />
-                  <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="assets/sdo/doctor-abhishek.webp" alt="Dr. Abhishek" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}" />
-                  <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="assets/sdo/doctor-marwa.webp" alt="Dr. Marwa" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}" />
-                  <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="assets/sdo/doctor-fowzaan.webp" alt="Dr. Fowzaan" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}" />
-                </span>
-                <br />
-                <span id="specHeadlinePart2">behind your smile</span>
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">
+                <span class="w-2 h-2 rounded-full bg-sky-300 animate-pulse"></span>
+                <span id="specEyebrow">360° ORBITAL FACULTY ROSTER • ABU DHABI SANCTUARY</span>
+              </div>
+              <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight uppercase">
+                <span id="specHeadlinePart1">ROTATE YOUR</span> <span id="specHeadlinePart2" class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500">ELITE SPECIALISTS</span>
               </h2>
-
-              <p id="specDescription" class="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6">
-                Faculty-level specialists with double master's degrees from Italy, Cairo University, and leading institutions in India &amp; the UAE — delivering up to 20+ years of clinical mastery.
+              <p id="specDescription" class="text-slate-300 text-xs sm:text-sm max-w-2xl mt-2 leading-relaxed">
+                Drag with your cursor, scroll your mouse wheel, or click rotated side cards to spin them forward. Hover the active doctor card to reveal full clinical credentials, bio, and instant booking.
               </p>
-
-              <button type="button" data-open-booking="true"
-                      class="inline-flex items-center gap-2 bg-[#0F2537] hover:bg-[#0070D2] text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-colors cursor-pointer">
-                <span id="specBookBtnText">Book with a specialist</span>
-                <span>&rarr;</span>
-              </button>
             </div>
 
-            <!-- Carousel Controls (< 01/06 >) -->
-            <div class="flex items-center gap-3 mt-8 lg:mt-0 pt-4">
-              <button type="button" id="specPrevBtn" aria-label="Previous specialist"
-                      class="w-10 h-10 rounded-full border border-slate-300 hover:border-[#0070D2] bg-white flex items-center justify-center text-slate-700 hover:text-[#0070D2] transition-colors cursor-pointer">
-                &#8249;
+            <!-- Right Controls: Category Filters & 3D Tilt / Orbit Controls -->
+            <div class="flex flex-wrap items-center justify-start lg:justify-end gap-3">
+              <!-- 3D Cursor Tilt Toggle -->
+              <button id="docCursorTiltBtn" type="button" onclick="toggleDoctorCursorTilt()" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-400/30 text-xs font-medium text-sky-300 transition cursor-pointer">
+                <span>🧭</span>
+                <span id="docCursorTiltText">3D Cursor Tilt: On</span>
               </button>
-              <span id="specCounter" class="text-xs font-semibold text-slate-600 tabular-nums px-1" dir="ltr">
-                01/06
-              </span>
-              <button type="button" id="specNextBtn" aria-label="Next specialist"
-                      class="w-10 h-10 rounded-full border border-slate-300 hover:border-[#0070D2] bg-white flex items-center justify-center text-slate-700 hover:text-[#0070D2] transition-colors cursor-pointer">
-                &#8250;
+
+              <!-- Auto-Orbit Toggle -->
+              <button id="docAutoplayBtn" type="button" onclick="toggleDoctorAutoplay()" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-medium text-slate-300 transition cursor-pointer">
+                <span id="docAutoplayDot" class="w-2 h-2 rounded-full bg-slate-500"></span>
+                <span id="docAutoplayText">Auto-Orbit: Off</span>
               </button>
+
+              <!-- Category Filter Pills -->
+              <div id="doctorFilterPillsContainer" class="flex items-center gap-1.5 bg-[#17395C]/80 p-1.5 rounded-xl border border-white/10 overflow-x-auto max-w-full">
+                <!-- Rendered dynamically -->
+              </div>
+
+              <!-- Prev / Next Orbit Buttons -->
+              <div class="flex items-center gap-2">
+                <button id="specPrevBtn" type="button" onclick="slideDoctorPrev()" aria-label="Rotate Left" class="w-11 h-11 rounded-xl bg-[#17395C] border border-white/15 hover:border-sky-400 hover:bg-[#0070D2] text-white flex items-center justify-center transition duration-200 shadow-lg cursor-pointer group">
+                  <span class="text-base rtl:rotate-180">&#10226;</span>
+                </button>
+                <button id="specNextBtn" type="button" onclick="slideDoctorNext()" aria-label="Rotate Right" class="w-11 h-11 rounded-xl bg-[#17395C] border border-white/15 hover:border-sky-400 hover:bg-[#0070D2] text-white flex items-center justify-center transition duration-200 shadow-lg cursor-pointer group">
+                  <span class="text-base rtl:rotate-180">&#10227;</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- Right Column (8 cols): Sliding Doctor Track -->
-          <div class="lg:col-span-8 relative scroll-reveal-right stagger-3">
-            <div id="specialistsTrackContainer" class="specialists-track-container overflow-hidden rounded-2xl">
-              <div id="specialistsTrack" class="specialists-track flex gap-4 transition-transform duration-500 ease-out">
-                <!-- Populated from sdoClinicData.doctors -->
-              </div>
+          <!-- 3D Circular Orbit Stage Viewport -->
+          <div id="doctorSliderViewport" class="circular-stage cursor-grab active:cursor-grabbing select-none my-2">
+            <!-- Glowing Circular Orbital Ring Background -->
+            <div class="orbital-ring-container">
+              <div id="orbitalRingMain" class="orbital-ring-main"></div>
+              <div class="orbital-ring-inner"></div>
+            </div>
+
+            <!-- Dynamic 3D Circular Track rendered via JS -->
+            <div id="doctorSliderTrack" class="carousel-3d-track">
+              <!-- 3D Rotated Cards injected dynamically -->
+            </div>
+          </div>
+
+          <!-- Slider Footer: Pagination Dots, Counter & Interactive Hints -->
+          <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
+            <div class="flex items-center gap-4">
+              <div id="doctorPaginationDots" class="flex items-center gap-2"></div>
+              <span id="doctorSlideCounterText" class="text-xs font-mono uppercase tracking-wider text-sky-200/80">
+                Active Specialist 1 of 6
+              </span>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-300">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
+                <span>🖱️</span>
+                <span>Drag / Wheel Scroll</span>
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
+                <span>🔄</span>
+                <span>Click Side Cards to Center</span>
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
+                <span>✨</span>
+                <span>Hover Center Card for Full Bio</span>
+              </span>
             </div>
           </div>
 
@@ -3924,201 +4173,635 @@
     // =========================================================================
     // SPECIALISTS CAROUSEL RENDERER (Touch Scrollable on Mobile + Center Snapped)
     // =========================================================================
-    function updateActiveDoctorFromScroll() {
-      const container = document.getElementById('specialistsTrackContainer');
-      if (!container || window.innerWidth >= 1024) return;
-      const cards = container.querySelectorAll('.specialist-card');
-      if (!cards.length) return;
-
-      const containerRect = container.getBoundingClientRect();
-      const containerCenter = containerRect.left + containerRect.width / 2;
-
-      let closestIndex = 0;
-      let minDistance = Infinity;
-
-      cards.forEach((card, idx) => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const dist = Math.abs(cardCenter - containerCenter);
-        if (dist < minDistance) {
-          minDistance = dist;
-          closestIndex = idx;
-        }
-      });
-
-      if (specCarouselIndex !== closestIndex) {
-        specCarouselIndex = closestIndex;
-        const counter = document.getElementById('specCounter');
-        if (counter) {
-          counter.textContent = `0${specCarouselIndex + 1}/0${sdoClinicData.doctors.length}`;
-        }
+    // =========================================================================
+    // 3D CIRCULAR ORBITAL SPECIALISTS SLIDER ENGINE
+    // =========================================================================
+    const doctorOrbitProfiles = [
+      {
+        id: "dr-snehal-amberkar",
+        category: "implants",
+        badgeEn: "Periodontics & Implants",
+        badgeAr: "جراحة اللثة والزراعة",
+        rating: "4.99",
+        reviews: 310,
+        metrics: { p1: "20+ YRS", l1En: "Leadership", l1Ar: "خبرة قيادية", p2: "99.8%", l2En: "Success Rate", l2Ar: "نسبة النجاح", p3: "100%", l3En: "Gentle Care", l3Ar: "راحة تامة" }
+      },
+      {
+        id: "dr-abhishek-parashar",
+        category: "ortho",
+        badgeEn: "Orthodontics & Invisalign",
+        badgeAr: "تقويم الأسنان والإنفزلاين",
+        rating: "4.98",
+        reviews: 285,
+        metrics: { p1: "16+ YRS", l1En: "Orthodontics", l1Ar: "تقويم الأسنان", p2: "Italy", l2En: "Master's Deg", l2Ar: "ماجستير إيطاليا", p3: "Damon", l3En: "Certified", l3Ar: "حاصرات ديمون" }
+      },
+      {
+        id: "dr-fowzaan-feroz",
+        category: "cosmetic",
+        badgeEn: "Hollywood Smile & Veneers",
+        badgeAr: "ابتسامة هوليوود وتجميل",
+        rating: "4.99",
+        reviews: 295,
+        metrics: { p1: "12+ YRS", l1En: "Prosthodontics", l1Ar: "استعاضة تجميلية", p2: "E-Max", l2En: "Ultra-Thin", l2Ar: "عدسات إيماكس", p3: "< 1 Hr", l3En: "Laser White", l3Ar: "تبييض بالليزر" }
+      },
+      {
+        id: "dr-marwa-soliman",
+        category: "endodontics",
+        badgeEn: "Microscopic Root Canal",
+        badgeAr: "علاج العصب المجهري",
+        rating: "4.97",
+        reviews: 240,
+        metrics: { p1: "14+ YRS", l1En: "Endodontics", l1Ar: "علاج العصب", p2: "Cairo", l2En: "Master's Deg", l2Ar: "ماجستير القاهرة", p3: "100%", l3En: "Painless", l3Ar: "بدون ألم" }
+      },
+      {
+        id: "dr-mona-mohamed",
+        category: "pediatric",
+        badgeEn: "Pediatric & Family Care",
+        badgeAr: "طب أسنان الأطفال والأسرة",
+        rating: "4.96",
+        reviews: 190,
+        metrics: { p1: "20+ YRS", l1En: "Family Care", l1Ar: "طب أسنان الأسرة", p2: "Fear-Free", l2En: "Pediatric Wing", l2Ar: "جناح الأطفال", p3: "Gentle", l3En: "Care", l3Ar: "عناية رقيقة" }
+      },
+      {
+        id: "dr-aya-atef",
+        category: "hygiene",
+        badgeEn: "Ultrasonic Hygiene & White",
+        badgeAr: "تنظيف وتبييض الليزر",
+        rating: "4.97",
+        reviews: 175,
+        metrics: { p1: "3+ YRS", l1En: "Hygiene Lead", l1Ar: "تنظيف وتلميع", p2: "Honors", l2En: "Sharjah Univ", l2Ar: "امتياز الشارقة", p3: "6-Step", l3En: "Protocol", l3Ar: "بروتوكول الـ 6 خطوات" }
       }
+    ];
+
+    let filteredDoctorsList = [...sdoClinicData.doctors];
+    let doctorSliderIndex = 0;
+    let doctorRingRotationAngle = 0;
+    let doctorAutoplayInterval = null;
+    let doctorCursorTiltEnabled = true;
+    let activeDoctorCategory = 'all';
+
+    function getCircularOffset(index, activeIndex, total) {
+      if (total <= 0) return 0;
+      let diff = index - activeIndex;
+      const half = total / 2;
+      if (diff > half) diff -= total;
+      if (diff <= -half) diff += total;
+      return diff;
     }
 
-    function scrollDoctorTo(index, smooth = true) {
-      const container = document.getElementById('specialistsTrackContainer');
+    function getDoctorFilterCategories() {
+      return [
+        { id: 'all', en: 'All Specialists (6)', ar: 'جميع الاستشاريين (6)' },
+        { id: 'ortho', en: 'Orthodontics', ar: 'تقويم الأسنان' },
+        { id: 'implants', en: 'Implants & Gums', ar: 'الزراعة واللثة' },
+        { id: 'cosmetic', en: 'Hollywood Smile', ar: 'ابتسامة هوليوود' },
+        { id: 'endodontics', en: 'Root Canal', ar: 'علاج العصب' },
+        { id: 'pediatric', en: 'Pediatric Care', ar: 'طب أسنان الأطفال' },
+        { id: 'hygiene', en: 'Hygiene & Whitening', ar: 'تنظيف وتبييض' }
+      ];
+    }
+
+    function renderDoctorFilterPills() {
+      const container = document.getElementById('doctorFilterPillsContainer');
       if (!container) return;
-      const cards = container.querySelectorAll('.specialist-card');
-      if (!cards[index]) return;
+      const categories = getDoctorFilterCategories();
+      container.innerHTML = categories.map(cat => {
+        const isActive = cat.id === activeDoctorCategory;
+        return `
+          <button type="button" onclick="filterDoctors('${cat.id}')"
+                  class="filter-doc-btn px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition cursor-pointer ${
+                    isActive
+                      ? 'bg-[#0070D2] text-white shadow-md'
+                      : 'text-slate-300 hover:text-white hover:bg-white/10'
+                  }">
+            ${t(cat.en, cat.ar)}
+          </button>
+        `;
+      }).join('');
+    }
 
-      const card = cards[index];
-      const containerRect = container.getBoundingClientRect();
-      const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      const containerCenter = containerRect.left + containerRect.width / 2;
-      const delta = cardCenter - containerCenter;
-
-      if (Math.abs(delta) > 2) {
-        container.scrollBy({
-          left: delta,
-          behavior: smooth ? 'smooth' : 'auto'
+    function filterDoctors(category) {
+      activeDoctorCategory = category;
+      if (category === 'all') {
+        filteredDoctorsList = [...sdoClinicData.doctors];
+      } else {
+        filteredDoctorsList = sdoClinicData.doctors.filter(d => {
+          const profile = doctorOrbitProfiles.find(p => p.id === d.id);
+          return profile && profile.category === category;
         });
       }
+      doctorSliderIndex = 0;
+      renderSpecialistsTrack();
+    }
 
-      const counter = document.getElementById('specCounter');
-      if (counter) {
-        counter.textContent = `0${index + 1}/0${sdoClinicData.doctors.length}`;
+    function toggleDoctorDrawer(event, doctorId) {
+      event.stopPropagation();
+      const card = document.querySelector(`.doctor-orbit-card[data-doctor-id="${doctorId}"]`);
+      if (!card) return;
+      card.classList.toggle('is-expanded');
+    }
+
+    function slideDoctorNext() {
+      const total = filteredDoctorsList.length;
+      if (!total) return;
+      doctorSliderIndex = (doctorSliderIndex + 1) % total;
+      doctorRingRotationAngle -= 60;
+      updateDoctorSliderPosition();
+    }
+
+    function slideDoctorPrev() {
+      const total = filteredDoctorsList.length;
+      if (!total) return;
+      doctorSliderIndex = (doctorSliderIndex - 1 + total) % total;
+      doctorRingRotationAngle += 60;
+      updateDoctorSliderPosition();
+    }
+
+    function goToDoctorSlide(index) {
+      const diff = getCircularOffset(index, doctorSliderIndex, filteredDoctorsList.length);
+      doctorRingRotationAngle -= diff * 60;
+      doctorSliderIndex = index;
+      updateDoctorSliderPosition();
+    }
+
+    function handleDoctorSlotClick(event, idx) {
+      if (window.wasDraggingDoctorCarousel) return;
+      if (idx !== doctorSliderIndex) {
+        event.stopPropagation();
+        goToDoctorSlide(idx);
       }
     }
 
     function renderSpecialistsTrack() {
-      const track = document.getElementById('specialistsTrack');
+      const track = document.getElementById('doctorSliderTrack');
       if (!track) return;
-      track.innerHTML = sdoClinicData.doctors.map(doc => `
-        <div class="specialist-card w-[275px] sm:w-[290px] shrink-0 rounded-2xl bg-gradient-to-b from-[#1E446B] to-[#112A45] p-4 text-white shadow-md flex flex-col justify-between group">
-          <div>
-            <div class="relative h-[230px] rounded-xl overflow-hidden bg-slate-200 mb-3.5">
-              <div class="absolute top-2.5 left-2.5 right-2.5 z-10 flex items-center justify-between gap-1.5">
-                <span class="bg-[#0F2537]/85 backdrop-blur-md text-white text-[10px] font-medium px-2.5 py-1 rounded-full truncate">
-                  ${t(doc.roleEn, doc.roleAr)}
-                </span>
-                <span class="bg-[#0070D2] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shrink-0">
-                  ${t(doc.experienceYears, doc.experienceAr)}
+
+      if (doctorSliderIndex >= filteredDoctorsList.length) {
+        doctorSliderIndex = 0;
+      }
+
+      renderDoctorFilterPills();
+
+      track.innerHTML = filteredDoctorsList.map((doc, idx) => {
+        const profile = doctorOrbitProfiles.find(p => p.id === doc.id) || {
+          badgeEn: t(doc.roleEn, doc.roleAr),
+          badgeAr: t(doc.roleEn, doc.roleAr),
+          rating: "4.98",
+          reviews: 200,
+          metrics: { p1: doc.experienceYears, l1En: "Leadership", l1Ar: "خبرة", p2: "5.0 ★", l2En: "Satisfaction", l2Ar: "تقييم", p3: "100%", l3En: "Precision", l3Ar: "دقة" }
+        };
+
+        const docName = t(doc.nameEn, doc.nameAr);
+        const docRole = t(doc.roleEn, doc.roleAr);
+        const docBio = t(doc.bioEn, doc.bioAr);
+        const docBadge = t(profile.badgeEn, profile.badgeAr);
+        const quals = (currentLang === 'ar' ? doc.qualificationsAr : doc.qualificationsEn) || [];
+        const specs = (currentLang === 'ar' ? doc.specialtiesAr : doc.specialtiesEn) || [];
+
+        return `
+          <div class="doctor-3d-slot" data-slot-index="${idx}" onclick="handleDoctorSlotClick(event, ${idx})">
+            <article class="doctor-orbit-card rounded-2xl bg-[#0E2740] border border-white/10 shadow-2xl group" data-doctor-id="${doc.id}">
+              
+              <!-- Full-Bleed Doctor Portrait -->
+              <img src="${doc.image}" alt="${docName}" draggable="false"
+                   onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
+                   class="doctor-img absolute inset-0 w-full h-full object-cover object-top pointer-events-none" />
+
+              <!-- Dark Gradient Vignette -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#091B2E] via-[#0A223B]/60 to-transparent opacity-95 pointer-events-none"></div>
+
+              <!-- Side Card Orbit Indicator Badge (Only shown when in rotated background state) -->
+              <div class="side-orbit-hint absolute inset-0 z-30 hidden items-center justify-center bg-[#071626]/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                <span class="px-4 py-2 rounded-full bg-[#0070D2] text-white font-extrabold text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(56,189,248,0.7)] flex items-center gap-1.5">
+                  <span>↻</span>
+                  <span>${t('Rotate to Center', 'تدوير للمنتصف')}</span>
                 </span>
               </div>
-              <img src="${doc.image}" alt="${t(doc.nameEn, doc.nameAr)}"
-                   onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
-                   class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-            </div>
 
-            <div class="px-1">
-              <div class="text-[10px] text-sky-300 font-medium mb-0.5">${t(doc.branchBadgeEn, doc.branchBadgeAr)}</div>
-              <h3 class="text-lg font-semibold tracking-tight mb-1">${t(doc.nameEn, doc.nameAr)}</h3>
-              <p class="text-xs text-white/80 font-light leading-relaxed line-clamp-3 mb-3">
-                ${t(doc.bioEn, doc.bioAr)}
-              </p>
-            </div>
+              <!-- TOP FLOATING BAR: Specialty Pill & Rating Badge -->
+              <div class="relative z-30 p-5 flex items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full bg-[#0A1E34]/85 backdrop-blur-md border border-sky-400/40 text-sky-300 text-[11px] font-bold uppercase tracking-wider shadow-md">
+                  ${docBadge}
+                </span>
+                <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#0A1E34]/85 backdrop-blur-md border border-white/15 text-xs font-bold text-white">
+                  <span class="text-amber-400 text-xs">★</span>
+                  <span>${profile.rating}</span>
+                </div>
+              </div>
+
+              <!-- INITIAL RESTING CARD CONTENT -->
+              <div class="initial-info absolute inset-x-0 bottom-0 z-10 p-6 flex flex-col justify-end">
+                <div class="flex items-center gap-2 text-xs font-semibold text-sky-300 uppercase tracking-widest mb-1">
+                  <span>⚡</span>
+                  <span>${t(doc.experienceYears, doc.experienceAr)}</span>
+                  <span class="text-white/40">•</span>
+                  <span class="text-white/80 truncate">${t(doc.branchBadgeEn, doc.branchBadgeAr)}</span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-bold uppercase text-white tracking-wide leading-tight">
+                  ${docName}
+                </h3>
+
+                <!-- Quick Preview Bar -->
+                <div class="mt-4 pt-3.5 border-t border-white/15 flex items-center justify-between">
+                  <div class="flex items-center gap-3 text-xs text-slate-300">
+                    <span class="flex items-center gap-1">
+                      <span class="text-sky-300 font-bold">🎓</span>
+                      <b>${quals.length}</b> ${t('Certs', 'شهادات')}
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <span class="text-sky-300 font-bold">🔬</span>
+                      <b>${specs.length}</b> ${t('Specialties', 'إجراء')}
+                    </span>
+                  </div>
+
+                  <button type="button" onclick="toggleDoctorDrawer(event, '${doc.id}')"
+                          class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-sky-300 hover:text-white transition cursor-pointer">
+                    <span>${t('More Details', 'التفاصيل')}</span>
+                    <span class="rtl:rotate-180">&rarr;</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- SLIDE-UP FROSTED GLASS HOVER DRAWER -->
+              <div class="hover-drawer">
+                <button type="button" onclick="toggleDoctorDrawer(event, '${doc.id}')"
+                        class="lg:hidden absolute top-4 end-4 p-1.5 rounded-lg bg-white/10 text-slate-300 hover:text-white" aria-label="Close drawer">
+                  ✕
+                </button>
+
+                <!-- 1. Doctor Header & Bio -->
+                <div class="stagger-item stagger-1">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold uppercase tracking-widest text-sky-300">${docRole}</span>
+                    <span class="text-[10px] font-semibold text-white/70">${t(doc.experienceYears, doc.experienceAr)}</span>
+                  </div>
+                  <h4 class="text-2xl font-bold uppercase text-white leading-tight mt-1">${docName}</h4>
+                  <p class="text-xs text-slate-200 leading-relaxed mt-2 line-clamp-3">
+                    ${docBio}
+                  </p>
+                </div>
+
+                <!-- 2. Performance Metrics Grid -->
+                <div class="stagger-item stagger-2 grid grid-cols-3 gap-2 my-3 p-2.5 rounded-xl bg-[#091E33]/90 border border-white/10 text-center">
+                  <div>
+                    <span class="text-lg font-bold text-sky-300 leading-none block">${profile.metrics.p1}</span>
+                    <span class="text-[9.5px] uppercase tracking-wider text-slate-400">${t(profile.metrics.l1En, profile.metrics.l1Ar)}</span>
+                  </div>
+                  <div class="border-x border-white/10">
+                    <span class="text-lg font-bold text-white leading-none block">${profile.metrics.p2}</span>
+                    <span class="text-[9.5px] uppercase tracking-wider text-slate-400">${t(profile.metrics.l2En, profile.metrics.l2Ar)}</span>
+                  </div>
+                  <div>
+                    <span class="text-lg font-bold text-emerald-400 leading-none block">${profile.metrics.p3}</span>
+                    <span class="text-[9.5px] uppercase tracking-wider text-slate-400">${t(profile.metrics.l3En, profile.metrics.l3Ar)}</span>
+                  </div>
+                </div>
+
+                <!-- 3. Key Qualifications -->
+                <div class="stagger-item stagger-3 mb-2.5">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-sky-300/80 block mb-1">
+                    ${t('Verified Credentials', 'المؤهلات المعتمدة')}
+                  </span>
+                  <div class="flex flex-wrap gap-1">
+                    ${quals.slice(0, 2).map(q => `
+                      <span class="px-2 py-0.5 rounded-md bg-white/10 text-[10.5px] font-medium text-slate-200 truncate max-w-full">
+                        🎓 ${q}
+                      </span>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <!-- 4. Schedule & Branch -->
+                <div class="stagger-item stagger-4 mb-3">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-sky-300/80 block mb-1">
+                    ${t('Branch Presence', 'التواجد في الفروع')}
+                  </span>
+                  <span class="px-2 py-0.5 rounded-md bg-sky-500/15 border border-sky-400/30 text-[10.5px] font-semibold text-sky-200">
+                    📍 ${t(doc.branchBadgeEn, doc.branchBadgeAr)}
+                  </span>
+                </div>
+
+                <!-- 5. Interactive CTA Buttons -->
+                <div class="stagger-item stagger-5 grid grid-cols-5 gap-2 pt-2 border-t border-white/10">
+                  <button type="button" onclick="openProductionBookingModal({ doctorId: '${doc.id}' })"
+                          class="col-span-3 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#0070D2] to-[#0A85EA] hover:from-[#085EA8] hover:to-[#0070D2] text-white font-extrabold text-xs uppercase tracking-wider transition flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(56,189,248,0.35)] cursor-pointer">
+                    <span>📅</span>
+                    <span>${t('Book Doctor', 'حجز موعد')}</span>
+                  </button>
+                  <button type="button" onclick="openDoctorDossierModal('${doc.id}')"
+                          class="col-span-2 py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider transition flex items-center justify-center gap-1 cursor-pointer">
+                    <span>${t('Dossier', 'الملف')}</span>
+                    <span class="rtl:rotate-180">&rarr;</span>
+                  </button>
+                </div>
+              </div>
+
+            </article>
           </div>
+        `;
+      }).join('');
 
-          <div class="px-1 pt-2.5 border-t border-white/15 flex items-center justify-between gap-2">
-            <button type="button" data-doc-modal="${doc.id}"
-                    class="open-doc-modal-btn text-[11px] font-medium text-sky-300 hover:text-white underline cursor-pointer">
-              ${t('Clinical Dossier', 'الملف الطبي')}
-            </button>
-            <button type="button" data-book-doc="${doc.id}"
-                    class="book-doc-direct-btn bg-[#0070D2] hover:bg-sky-500 text-white text-[11px] font-semibold px-3.5 py-1.5 rounded-full transition-colors cursor-pointer">
-              ${t('Book Doctor', 'حجز موعد')}
-            </button>
-          </div>
-        </div>
-      `).join('');
+      updateDoctorSliderPosition();
+      initDoctor3DInteractions();
+    }
 
-      updateSpecialistsTransform();
+    function updateDoctorSliderPosition(dragOffsetPx = 0) {
+      const slots = document.querySelectorAll('.doctor-3d-slot');
+      const total = filteredDoctorsList.length;
+      if (!total) return;
 
-      // Bind modal & booking buttons
-      track.querySelectorAll('.open-doc-modal-btn').forEach(btn => {
-        btn.addEventListener('click', () => openDoctorDossierModal(btn.dataset.docModal));
+      const isMobile = window.innerWidth < 640;
+      const isTablet = window.innerWidth < 1024;
+
+      const spreadX = isMobile ? 165 : (isTablet ? 275 : 380);
+      const farSpreadX = isMobile ? 250 : (isTablet ? 410 : 570);
+
+      slots.forEach((slot, idx) => {
+        const offset = getCircularOffset(idx, doctorSliderIndex, total);
+        const hoverDrawer = slot.querySelector('.hover-drawer');
+        const sideHint = slot.querySelector('.side-orbit-hint');
+
+        const dragNormalized = Math.max(-1, Math.min(1, dragOffsetPx / 260));
+
+        slot.classList.remove('is-center', 'is-side');
+
+        if (offset === 0) {
+          slot.classList.add('is-center');
+          const tx = dragOffsetPx * 0.35;
+          const ry = -dragNormalized * 12;
+          slot.style.transform = `translate3d(${tx}px, 0px, 90px) rotateY(${ry}deg) scale(1)`;
+          slot.style.opacity = '1';
+          slot.style.filter = 'brightness(1) blur(0px)';
+          slot.style.zIndex = '30';
+          slot.style.pointerEvents = 'auto';
+          if (hoverDrawer) hoverDrawer.style.display = 'flex';
+          if (sideHint) {
+            sideHint.classList.add('hidden');
+            sideHint.classList.remove('flex');
+          }
+        } else if (offset === -1 || offset === 1) {
+          slot.classList.add('is-side');
+          const dir = offset < 0 ? -1 : 1;
+          const tx = dir * spreadX + (dragOffsetPx * 0.2);
+          const tz = -155;
+          const ry = dir * -36;
+          const rz = dir * 6;
+          const scale = isMobile ? 0.78 : 0.84;
+
+          slot.style.transform = `translate3d(${tx}px, 16px, ${tz}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${scale})`;
+          slot.style.opacity = '0.78';
+          slot.style.filter = 'brightness(0.62) saturate(0.85)';
+          slot.style.zIndex = '20';
+          slot.style.pointerEvents = 'auto';
+          if (hoverDrawer) hoverDrawer.style.display = 'none';
+          if (sideHint) {
+            sideHint.classList.remove('hidden');
+            sideHint.classList.add('flex');
+          }
+        } else if (offset === -2 || offset === 2) {
+          const dir = offset < 0 ? -1 : 1;
+          const tx = dir * farSpreadX;
+          const tz = -340;
+          const ry = dir * -55;
+          const rz = dir * 11;
+
+          slot.style.transform = `translate3d(${tx}px, 34px, ${tz}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(0.66)`;
+          slot.style.opacity = isMobile ? '0' : '0.28';
+          slot.style.filter = 'brightness(0.35) blur(1.5px)';
+          slot.style.zIndex = '10';
+          slot.style.pointerEvents = isMobile ? 'none' : 'auto';
+          if (hoverDrawer) hoverDrawer.style.display = 'none';
+          if (sideHint) {
+            sideHint.classList.add('hidden');
+            sideHint.classList.remove('flex');
+          }
+        } else {
+          slot.style.transform = `translate3d(0px, 50px, -480px) rotateY(180deg) scale(0.5)`;
+          slot.style.opacity = '0';
+          slot.style.zIndex = '1';
+          slot.style.pointerEvents = 'none';
+        }
       });
-      track.querySelectorAll('.book-doc-direct-btn').forEach(btn => {
-        btn.addEventListener('click', () => openProductionBookingModal({ doctorId: btn.dataset.bookDoc }));
-      });
 
-      // Bind touch scroll and mouse swipe handlers once
-      const container = document.getElementById('specialistsTrackContainer');
-      if (container && !container.dataset.carouselInit) {
-        container.dataset.carouselInit = '1';
-        let scrollTimeout = null;
-        container.addEventListener('scroll', () => {
-          if (window.innerWidth >= 1024) return;
-          if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
-          scrollTimeout = requestAnimationFrame(() => {
-            updateActiveDoctorFromScroll();
-          });
-        }, { passive: true });
+      const orbitalRing = document.getElementById('orbitalRingMain');
+      if (orbitalRing) {
+        orbitalRing.style.transform = `rotateX(68deg) translateZ(-120px) rotateZ(${doctorRingRotationAngle}deg)`;
+      }
 
-        // Touch swipe vs click differentiator
-        let touchStartX = 0;
-        let isSwiping = false;
-        container.addEventListener('touchstart', (e) => {
-          touchStartX = e.touches[0].clientX;
-          isSwiping = false;
-        }, { passive: true });
+      // Render Pagination Dots
+      const dotsContainer = document.getElementById('doctorPaginationDots');
+      if (dotsContainer) {
+        dotsContainer.innerHTML = filteredDoctorsList.map((doc, idx) => `
+          <button type="button" onclick="goToDoctorSlide(${idx})"
+                  aria-label="Rotate to ${t(doc.nameEn, doc.nameAr)}"
+                  class="h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === doctorSliderIndex
+                      ? 'w-9 bg-[#0070D2] shadow-[0_0_12px_rgba(56,189,248,0.75)]'
+                      : 'w-2.5 bg-white/20 hover:bg-white/45'
+                  }">
+          </button>
+        `).join('');
+      }
 
-        container.addEventListener('touchmove', (e) => {
-          if (Math.abs(e.touches[0].clientX - touchStartX) > 8) {
-            isSwiping = true;
-          }
-        }, { passive: true });
-
-        container.addEventListener('click', (e) => {
-          if (isSwiping) {
-            e.preventDefault();
-            e.stopPropagation();
-            isSwiping = false;
-          }
-        }, true);
-
-        // Mouse drag support for desktop/testing
-        let isMouseDown = false;
-        let dragStartX = 0;
-        let dragScrollStart = 0;
-        let didDrag = false;
-
-        container.addEventListener('mousedown', (e) => {
-          if (window.innerWidth >= 1024 || e.target.closest('button, a')) return;
-          isMouseDown = true;
-          didDrag = false;
-          dragStartX = e.pageX;
-          dragScrollStart = container.scrollLeft;
-          container.style.cursor = 'grabbing';
-          container.style.userSelect = 'none';
-        });
-
-        window.addEventListener('mousemove', (e) => {
-          if (!isMouseDown) return;
-          const diff = e.pageX - dragStartX;
-          if (Math.abs(diff) > 4) didDrag = true;
-          container.scrollLeft = dragScrollStart - diff;
-        });
-
-        window.addEventListener('mouseup', () => {
-          if (!isMouseDown) return;
-          isMouseDown = false;
-          container.style.cursor = '';
-          container.style.userSelect = '';
-          if (didDrag) {
-            setTimeout(updateActiveDoctorFromScroll, 50);
-          }
-        });
+      // Active Doctor Counter
+      const activeDoc = filteredDoctorsList[doctorSliderIndex];
+      const counterText = document.getElementById('doctorSlideCounterText');
+      if (counterText) {
+        counterText.textContent = activeDoc
+          ? `${t('Specialist', 'استشاري')} ${doctorSliderIndex + 1} ${t('of', 'من')} ${total} • ${t(activeDoc.nameEn, activeDoc.nameAr)}`
+          : `0 Specialists`;
       }
     }
 
-    function updateSpecialistsTransform() {
-      const track = document.getElementById('specialistsTrack');
-      if (!track) return;
-      if (window.innerWidth < 1024) {
-        track.style.transform = 'none';
-        scrollDoctorTo(specCarouselIndex, false);
+    function toggleDoctorCursorTilt() {
+      doctorCursorTiltEnabled = !doctorCursorTiltEnabled;
+      const textEl = document.getElementById('docCursorTiltText');
+      const btnEl = document.getElementById('docCursorTiltBtn');
+      const track = document.getElementById('doctorSliderTrack');
+
+      if (doctorCursorTiltEnabled) {
+        if (textEl) textEl.textContent = t('3D Cursor Tilt: On', 'الميل التفاعلي: تفعيل');
+        if (btnEl) btnEl.className = "hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-400/30 text-xs font-medium text-sky-300 transition cursor-pointer";
+      } else {
+        if (textEl) textEl.textContent = t('3D Cursor Tilt: Off', 'الميل التفاعلي: إيقاف');
+        if (btnEl) btnEl.className = "hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-medium text-slate-400 transition cursor-pointer";
+        if (track) track.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      }
+    }
+
+    function toggleDoctorAutoplay() {
+      const dot = document.getElementById('docAutoplayDot');
+      const text = document.getElementById('docAutoplayText');
+
+      if (doctorAutoplayInterval) {
+        clearInterval(doctorAutoplayInterval);
+        doctorAutoplayInterval = null;
+        if (dot) dot.className = "w-2 h-2 rounded-full bg-slate-500";
+        if (text) text.textContent = t('Auto-Orbit: Off', 'الدوران التلقائي: إيقاف');
+      } else {
+        doctorAutoplayInterval = setInterval(() => {
+          slideDoctorNext();
+        }, 3800);
+        if (dot) dot.className = "w-2 h-2 rounded-full bg-sky-400 animate-ping";
+        if (text) text.textContent = t('Auto-Orbit: On', 'الدوران التلقائي: تفعيل');
+      }
+    }
+
+    function initDoctor3DInteractions() {
+      const viewport = document.getElementById('doctorSliderViewport');
+      const track = document.getElementById('doctorSliderTrack');
+      const follower = document.getElementById('cursorFollower');
+      const followerText = document.getElementById('cursorFollowerText');
+
+      if (!viewport || !track || viewport.dataset.interactionsInit) return;
+      viewport.dataset.interactionsInit = '1';
+
+      let startX = 0;
+      let currentDragX = 0;
+      let isDragging = false;
+      let wheelCooldown = false;
+      window.wasDraggingDoctorCarousel = false;
+
+      // Touch Swipe Support for Mobile & Tablets
+      viewport.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        window.wasDraggingDoctorCarousel = false;
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentDragX = e.touches[0].clientX - startX;
+        if (Math.abs(currentDragX) > 10) {
+          window.wasDraggingDoctorCarousel = true;
+        }
+        updateDoctorSliderPosition(currentDragX);
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        isDragging = false;
+        if (Math.abs(diff) > 42) {
+          if (diff > 0) slideDoctorNext();
+          else slideDoctorPrev();
+        } else {
+          updateDoctorSliderPosition(0);
+        }
+        setTimeout(() => { window.wasDraggingDoctorCarousel = false; }, 60);
+      }, { passive: true });
+
+      // Mouse Cursor Enter / Leave / Move
+      viewport.addEventListener('mouseenter', () => {
+        if (follower && window.innerWidth >= 1024) {
+          follower.classList.add('active');
+        }
+      });
+
+      viewport.addEventListener('mouseleave', () => {
+        if (follower) follower.classList.remove('active', 'dragging');
+        track.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        if (isDragging) {
+          isDragging = false;
+          updateDoctorSliderPosition(0);
+        }
+      });
+
+      viewport.addEventListener('mousemove', (e) => {
+        if (follower) {
+          follower.style.left = `${e.clientX}px`;
+          follower.style.top = `${e.clientY - 28}px`;
+        }
+
+        if (doctorCursorTiltEnabled && !isDragging) {
+          const rect = viewport.getBoundingClientRect();
+          const normX = ((e.clientX - rect.left) / rect.width) - 0.5;
+          const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
+          track.style.transform = `rotateY(${normX * 10}deg) rotateX(${-normY * 7}deg)`;
+        }
+
+        if (isDragging) {
+          currentDragX = e.clientX - startX;
+          if (Math.abs(currentDragX) > 8) {
+            window.wasDraggingDoctorCarousel = true;
+          }
+          updateDoctorSliderPosition(currentDragX);
+        }
+      });
+
+      // Mouse Down / Up Dragging
+      viewport.addEventListener('mousedown', (e) => {
+        if (e.target.closest('button, a')) return;
+        startX = e.clientX;
+        currentDragX = 0;
+        isDragging = true;
+        window.wasDraggingDoctorCarousel = false;
+        if (follower) {
+          follower.classList.add('dragging');
+          if (followerText) followerText.textContent = t('Rotating Orbit...', 'جاري التدوير...');
+        }
+      });
+
+      window.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        const diff = startX - e.clientX;
+        isDragging = false;
+        if (follower) {
+          follower.classList.remove('dragging');
+          if (followerText) followerText.textContent = t('Drag / Scroll', 'سحب / تدوير');
+        }
+
+        if (Math.abs(diff) > 48) {
+          if (diff > 0) slideDoctorNext();
+          else slideDoctorPrev();
+        } else {
+          updateDoctorSliderPosition(0);
+        }
+        setTimeout(() => { window.wasDraggingDoctorCarousel = false; }, 60);
+      });
+
+      // Mouse Wheel Scrolling over Stage
+      viewport.addEventListener('wheel', (e) => {
+        const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        if (Math.abs(delta) < 14) return;
+        e.preventDefault();
+
+        if (wheelCooldown) return;
+        wheelCooldown = true;
+
+        if (delta > 0) {
+          slideDoctorNext();
+        } else {
+          slideDoctorPrev();
+        }
+
+        setTimeout(() => {
+          wheelCooldown = false;
+        }, 420);
+      }, { passive: false });
+    }
+
+    window.addEventListener('resize', () => {
+      updateDoctorSliderPosition();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      const clinicalModal = document.getElementById('clinicalModalOverlay');
+      const bookingModal = document.getElementById('productionBookingModal');
+      if ((clinicalModal && !clinicalModal.classList.contains('hidden')) || (bookingModal && !bookingModal.classList.contains('hidden'))) {
         return;
       }
-      const cardStep = 300;
-      const dirMultiplier = currentLang === 'ar' ? 1 : -1;
-      track.style.transform = `translateX(${dirMultiplier * specCarouselIndex * cardStep}px)`;
-      const counter = document.getElementById('specCounter');
-      if (counter) {
-        counter.textContent = `0${specCarouselIndex + 1}/0${sdoClinicData.doctors.length}`;
+      if (e.key === 'ArrowRight') {
+        if (currentLang === 'ar') slideDoctorPrev();
+        else slideDoctorNext();
       }
-    }
+      if (e.key === 'ArrowLeft') {
+        if (currentLang === 'ar') slideDoctorNext();
+        else slideDoctorPrev();
+      }
+    });
 
     function renderTransformationTabs() {
       const categories = [
@@ -4899,6 +5582,13 @@ _Confirmed via SDO Center Production Booking Studio_`;
     <button type="button" class="snap-dot" data-target-sec="transformations" title="5. Transformations & Reviews" aria-label="Go to Transformations"></button>
     <button type="button" class="snap-dot" data-target-sec="locations" title="6. Locations & Contacts" aria-label="Go to Locations"></button>
   </aside>
+
+
+  <!-- CUSTOM CURSOR DRAG FOLLOWER -->
+  <div id="cursorFollower" class="px-3.5 py-2 rounded-full bg-[#0A1E34]/95 border border-sky-400 text-sky-300 text-[11px] font-extrabold uppercase tracking-wider shadow-[0_0_25px_rgba(56,189,248,0.4)] flex items-center gap-1.5 backdrop-blur-md">
+    <span>⇄</span>
+    <span id="cursorFollowerText">Drag / Scroll</span>
+  </div>
 
 </body>
 </html>
