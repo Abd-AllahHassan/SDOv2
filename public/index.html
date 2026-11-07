@@ -1081,6 +1081,15 @@
       transition-delay: 0.25s;
     }
 
+  
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  
   </style>
 </head>
 <body class="p-0 m-0 antialiased selection:bg-[#0070D2] selection:text-white bg-white w-full">
@@ -1331,46 +1340,52 @@
            4. "EXPERT CARE FOR EVERY SMILE" — 10 CLINICAL SUITES
               60fps In-Place Flex-Accordion + 10 Custom 3D Holographic Visuals
       ====================================================================== -->
-      <section id="services" class="snap-section min-h-screen min-h-[100dvh] flex flex-col justify-center py-6 sm:py-8 pb-16 sm:pb-20 px-4 sm:px-8 lg:px-10 bg-white w-full" data-section-name="Suites">
-        <div class="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
-          <span id="servicesEyebrow" class="text-[11px] uppercase tracking-[0.2em] text-slate-400 font-semibold block mb-2 scroll-reveal-el stagger-1">
-            SERVICES • 10 SPECIALIZED CLINICAL SUITES
-          </span>
-          <h2 id="servicesHeadline" class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#0F2537] mb-2.5 scroll-reveal-el stagger-2">
-            Expert care for every smile
-          </h2>
-          <p id="servicesSubhead" class="text-xs sm:text-sm text-slate-500 scroll-reveal-el stagger-3">
-            Your Trusted Dental Sanctuary. Specialized Care &amp; Lifelong Natural Smiles.
-          </p>
-        </div>
+      <section id="services" class="snap-section min-h-screen min-h-[100dvh] flex flex-col justify-center py-8 sm:py-12 px-4 sm:px-8 lg:px-10 bg-slate-50/70 border-t border-slate-100 w-full" data-section-name="Suites">
+        <div class="max-w-7xl mx-auto w-full">
+          
+          <!-- Section Header + Controls (Title, Subhead, Prev/Next buttons) -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4">
+            <div>
+              <span id="servicesEyebrow" class="text-[11px] uppercase tracking-[0.2em] text-[#0070D2] font-bold block mb-2">
+                SERVICES • 10 SPECIALIZED CLINICAL SUITES
+              </span>
+              <h2 id="servicesHeadline" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0F2537] leading-tight">
+                Our Services
+              </h2>
+              <p id="servicesSubhead" class="text-xs sm:text-sm text-slate-500 max-w-2xl mt-1.5 leading-relaxed">
+                Your Trusted Dental Sanctuary. Specialized Care &amp; Lifelong Natural Smiles across 10 specialized clinical suites.
+              </p>
+            </div>
 
-        <!-- 4 Flagship Clinical Cards Container (Image on Top -> On Hover: Full Background + Glass Blur) -->
-        <div id="servicesAccordionContainer" class="expert-care-accordion scroll-reveal-scale stagger-4">
-          <!-- Rendered dynamically by buildServicesAccordionDOM() with exactly 4 cards -->
-        </div>
-
-        <!-- Mobile Slider Indicator Dots & Swipe Controls (Visible on mobile/tablet < 1024px) -->
-        <div id="servicesMobileSliderNav" class="flex lg:hidden items-center justify-between gap-3 max-w-xs mx-auto mt-3 px-2 scroll-reveal-el stagger-5">
-          <button type="button" id="prevSuiteMobileBtn"
-                  class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-sm font-bold transition-all cursor-pointer shadow-xs"
-                  aria-label="Previous Suite">
-            <span class="rtl:hidden">&#8249;</span>
-            <span class="hidden rtl:inline">&#8250;</span>
-          </button>
-
-          <div id="servicesSliderDots" class="flex items-center gap-1.5" dir="ltr">
-            <span class="suite-slider-dot w-6 h-2 rounded-full bg-[#0070D2] transition-all cursor-pointer" data-slide-index="0"></span>
-            <span class="suite-slider-dot w-2 h-2 rounded-full bg-slate-200 transition-all cursor-pointer" data-slide-index="1"></span>
-            <span class="suite-slider-dot w-2 h-2 rounded-full bg-slate-200 transition-all cursor-pointer" data-slide-index="2"></span>
-            <span class="suite-slider-dot w-2 h-2 rounded-full bg-slate-200 transition-all cursor-pointer" data-slide-index="3"></span>
+            <!-- Slider Arrows & Counter -->
+            <div class="flex items-center gap-3">
+              <span id="servicesCounterText" class="text-xs font-mono font-bold text-slate-500 hidden sm:inline-block">
+                Suite 01 / 10
+              </span>
+              <div class="flex items-center gap-2">
+                <button id="servicesPrevBtn" type="button" onclick="slideServicesPrev()" aria-label="Previous Services"
+                        class="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-[#0070D2] hover:bg-[#0070D2] hover:text-white text-[#0F2537] flex items-center justify-center transition shadow-sm cursor-pointer">
+                  <span class="text-sm rtl:rotate-180">&#10226;</span>
+                </button>
+                <button id="servicesNextBtn" type="button" onclick="slideServicesNext()" aria-label="Next Services"
+                        class="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-[#0070D2] hover:bg-[#0070D2] hover:text-white text-[#0F2537] flex items-center justify-center transition shadow-sm cursor-pointer">
+                  <span class="text-sm rtl:rotate-180">&#10227;</span>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <button type="button" id="nextSuiteMobileBtn"
-                  class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-sm font-bold transition-all cursor-pointer shadow-xs"
-                  aria-label="Next Suite">
-            <span class="rtl:hidden">&#8250;</span>
-            <span class="hidden rtl:inline">&#8249;</span>
-          </button>
+          <!-- Normal Slider Track: All 10 Services -->
+          <div id="servicesSliderTrack"
+               class="flex gap-5 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-3 px-1 no-scrollbar select-none cursor-grab active:cursor-grabbing">
+            <!-- 10 Service Cards injected dynamically -->
+          </div>
+
+          <!-- Bottom Pagination Dots & Navigation -->
+          <div class="flex items-center justify-center gap-2 mt-6" id="servicesSliderDots">
+            <!-- 10 Dots populated dynamically -->
+          </div>
+
         </div>
       </section>
 
@@ -1442,7 +1457,7 @@
             Real stories. Real smiles.
           </h2>
           <p id="transSubhead" class="text-xs sm:text-sm text-slate-500">
-            12 documented clinical smile transformations paired with 100% verified 5.0★ Google patient reviews in Abu Dhabi.
+            6 documented clinical smile transformations paired with 100% verified 5.0★ Google patient reviews in Abu Dhabi.
           </p>
         </div>
 
@@ -3049,99 +3064,9 @@
       "afterImg": "assets/sdo/split-gums-after.webp",
       "descEn": "Immediate aesthetic anterior implant replacement with natural gingival contouring matching adjacent natural teeth.",
       "descAr": "زراعة سن أمامي فوري واستعادة حواف اللثة الطبيعية بتناسق كامل مع الأسنان المجاورة."
-    },
-    {
-      "id": "case-whitening-2",
-      "category": "whitening",
-      "titleEn": "Lower Lingual Calculus & Deep Stain Clearance",
-      "titleAr": "إزالة الرواسب الجيرية وتبييض الأسنان السفلية",
-      "doctorEn": "Dr. Aya Atef Saad",
-      "doctorAr": "د. آية عاطف سعد",
-      "durationEn": "Single Visit",
-      "durationAr": "جلسة واحدة",
-      "shadeShift": "Clean Natural Enamel",
-      "beforeImg": "assets/sdo/split-whitening-2-before.webp",
-      "afterImg": "assets/sdo/split-whitening-2-after.webp",
-      "descEn": "Targeted eradication of stubborn lingual plaque deposits and discoloration from inner dental surfaces.",
-      "descAr": "تنظيف وإزالة ترسبات الجير المستعصية على الأسطح الداخلية للأسنان واستعادة صحة اللثة."
-    },
-    {
-      "id": "case-ortho-2",
-      "category": "ortho",
-      "titleEn": "Anterior Deep Overbite & Arch Alignment",
-      "titleAr": "علاج العضة العميقة وتصحيح تزاحم القواطع",
-      "doctorEn": "Dr. Abhishek Parashar",
-      "doctorAr": "د. أبهيشيك باراشار",
-      "durationEn": "Face-Driven Ortho",
-      "durationAr": "تقويم موجه للوجه",
-      "shadeShift": "Ideal Functional Overjet",
-      "beforeImg": "assets/sdo/split-ortho-2-before.webp",
-      "afterImg": "assets/sdo/split-ortho-2-after.webp",
-      "descEn": "Expansion and leveling of crowded arches, alleviating anterior impingement and deep vertical overlap.",
-      "descAr": "توسيع وتعديل مستوى الفكين وتصحيح العضة العميقة والتزاحم لتسهيل المضغ وتحسين مظهر الابتسامة."
-    },
-    {
-      "id": "case-implants-2",
-      "category": "implants",
-      "titleEn": "Maxillary Anterior Zirconia Crown & Gum Reshaping",
-      "titleAr": "تاج زركونيا تجميلي أمامي وإعادة تشكيل اللثة",
-      "doctorEn": "Dr. Snehal Amberkar",
-      "doctorAr": "د. سنيهال أمبركار",
-      "durationEn": "Custom Aesthetic Lab Protocol",
-      "durationAr": "تصميم مخبري رقمي مخصص",
-      "shadeShift": "Lifelike Translucency",
-      "beforeImg": "assets/sdo/split-implants-2-before.webp",
-      "afterImg": "assets/sdo/split-implants-2-after.webp",
-      "descEn": "Correction of asymmetrical discolored anterior crowns and gum margin height to create an even, youthful smile line.",
-      "descAr": "استبدال التيجان القديمة المتصبغة بتيجان زركونيا عالية الشفافية مع تعديل مستوى اللثة لابتسامة متوازنة."
-    },
-    {
-      "id": "case-veneers-2",
-      "category": "veneers",
-      "titleEn": "3-Stage Fractured Incisor Restoration & Ceramic Crown",
-      "titleAr": "ترميم كسر السن الأمامي على 3 مراحل بتاج خزفي",
-      "doctorEn": "Dr. Fowzaan Feroz",
-      "doctorAr": "د. فوزان فيروز",
-      "durationEn": "Staged Clinical Protocol",
-      "durationAr": "علاج سريري مرحلي متقن",
-      "shadeShift": "Undetectable Margin Match",
-      "beforeImg": "assets/sdo/split-veneers-2-before.webp",
-      "afterImg": "assets/sdo/split-veneers-2-after.webp",
-      "descEn": "Step-by-step restoration of severely decayed fractured central incisor from core build-up to final aesthetic porcelain crown.",
-      "descAr": "إعادة بناء جذر وسن أمامي متآكل ومكسور خطوة بخطوة حتى تركيب التاج الخزفي التجميلي المطابق تماماً للأسنان المجاورة."
-    },
-    {
-      "id": "case-cleaning-2",
-      "category": "cleaning",
-      "titleEn": "Heavy Lingual Calculus Removal & Gum Healing",
-      "titleAr": "إزالة الجير المتكلس خلف الأسنان وشفاء اللثة",
-      "doctorEn": "Dr. Aya Atef Saad",
-      "doctorAr": "د. آية عاطف سعد",
-      "durationEn": "Gentle Scaling",
-      "durationAr": "تنظيف لطيف",
-      "shadeShift": "Healthy Pink Margins",
-      "beforeImg": "assets/sdo/split-cleaning-2-before.webp",
-      "afterImg": "assets/sdo/split-cleaning-2-after.webp",
-      "descEn": "Ultrasonic cavitation clearing thick mineralized deposits around lower incisors to prevent periodontitis.",
-      "descAr": "تنظيف عميق للتكلسات المعدنية خلف الأسنان السفلية لوقف نزيف اللثة وحماية عظام الفك."
-    },
-    {
-      "id": "case-gums-2",
-      "category": "gums",
-      "titleEn": "Edentulous Space Implant Restoration & Smile Rejuvenation",
-      "titleAr": "تعويض السن المفقود بالزراعة واستعادة شباب الابتسامة",
-      "doctorEn": "Dr. Snehal Amberkar",
-      "doctorAr": "د. سنيهال أمبركار",
-      "durationEn": "Precision Implant",
-      "durationAr": "زراعة دقيقة",
-      "shadeShift": "Natural Bite Alignment",
-      "beforeImg": "assets/sdo/split-gums-2-before.webp",
-      "afterImg": "assets/sdo/split-gums-2-after.webp",
-      "descEn": "Restoration of a prominent missing front tooth with a permanent implant and natural shade-matched porcelain crown.",
-      "descAr": "تعويض الفراغ المفقود في الأسنان الأمامية بزرعة متطورة وتاج خزفي يطابق مظهر ولون الأسنان الطبيعية."
     }
-  ],
-  "reviews": [
+    ],
+    "reviews": [
     {
       "id": "rev-saif",
       "author": "SAIF ALALI",
@@ -3365,249 +3290,210 @@
       }
     ];
 
-    function buildServicesAccordionDOM() {
-      const container = document.getElementById('servicesAccordionContainer');
-      if (!container) return;
+    function renderServicesSlider() {
+      const track = document.getElementById('servicesSliderTrack');
+      const dotsContainer = document.getElementById('servicesSliderDots');
+      const counter = document.getElementById('servicesCounterText');
+      if (!track) return;
 
-      const isDesktop = window.innerWidth >= 1024;
+      const services = sdoClinicData.services;
 
-      container.innerHTML = flagshipSuites4.map((srv, idx) => {
-        // Desktop: default one card (card 1) in hovered mode (.active)
-        // Phone / Mobile: ALL cards in not-hovered mode (no .active)
-        const isActive = isDesktop && idx === 0;
+      // Update Section Header Translations
+      const srvHeadline = document.getElementById('servicesHeadline');
+      if (srvHeadline) srvHeadline.textContent = t('Our Services', 'خدماتنا التخصصية');
+      const srvEyebrow = document.getElementById('servicesEyebrow');
+      if (srvEyebrow) srvEyebrow.textContent = t('SERVICES • 10 SPECIALIZED CLINICAL SUITES', 'الخدمات • 10 أجنحة تخصصية متكاملة');
+      const srvSubhead = document.getElementById('servicesSubhead');
+      if (srvSubhead) srvSubhead.textContent = t(
+        'Your Trusted Dental Sanctuary. Specialized Care & Lifelong Natural Smiles across 10 specialized clinical suites.',
+        'ملاذك الموثوق لطب وتجميل الأسنان. رعاية تخصصية شاملة وابتسامة طبيعية تدوم عبر 10 أجنحة طبية متكاملة.'
+      );
+
+      // Render all 10 Service Cards
+      track.innerHTML = services.map((srv, idx) => {
+        const doc = sdoClinicData.doctors.find(d => d.id === srv.doctorId) || sdoClinicData.doctors[0];
+        const srvTitle = t(srv.titleEn, srv.titleAr);
+        const srvTag = t(srv.tagEn, srv.tagAr);
+        const srvDesc = t(srv.shortDescEn, srv.shortDescAr);
+        const srvTech = t(srv.technologyEn, srv.technologyAr);
+        const docName = doc ? t(doc.nameEn, doc.nameAr) : t(srv.leadDoctorEn, srv.leadDoctorAr);
+        const docRole = doc ? t(doc.roleEn, doc.roleAr) : '';
+        const docImg = doc ? doc.image : 'assets/sdo/logo-160.webp';
+        const suiteNum = srv.index || String(idx + 1).padStart(2, '0');
+
         return `
-          <div class="expert-care-card group ${isActive ? 'active' : ''}" data-service-id="${srv.id}">
-            <!-- 1. Full-Bleed Background Image (Smooth Zoom & Fade-in on Hover / Active) -->
-            <div class="expert-card-bg-layer">
+          <article class="service-slide-card min-w-[285px] sm:min-w-[340px] md:min-w-[360px] lg:min-w-[380px] max-w-[390px] snap-start bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group shrink-0" data-service-id="${srv.id}">
+            <!-- Special Image for Every Service -->
+            <div class="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100">
               <img src="${srv.image}"
-                   alt="${t(srv.titleEn, srv.titleAr)}"
+                   alt="${srvTitle}"
                    loading="lazy"
                    decoding="async"
-                   onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}" />
-              <div class="expert-card-bg-scrim"></div>
+                   onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent pointer-events-none"></div>
+
+              <!-- Suite Badge -->
+              <div class="absolute top-3.5 start-3.5 z-10">
+                <span class="px-2.5 py-1 rounded-full text-[10.5px] font-mono font-bold bg-[#0A2540]/90 text-sky-300 backdrop-blur-md border border-sky-400/30 shadow-xs">
+                  SUITE ${suiteNum}
+                </span>
+              </div>
+
+              <!-- Specialty Tag -->
+              <div class="absolute bottom-3 start-3.5 z-10">
+                <span class="px-2.5 py-0.5 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-white/95 text-[#0070D2] shadow-xs">
+                  ${srvTag}
+                </span>
+              </div>
             </div>
 
-            <!-- 2. Resting View: Image on Top, Name under it -->
-            <div class="expert-card-resting">
+            <!-- Card Body -->
+            <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between bg-white">
               <div>
-                <!-- Top Image Box -->
-                <div class="resting-img-frame relative">
-                  <img src="${srv.image}"
-                       alt="${t(srv.titleEn, srv.titleAr)}"
-                       loading="lazy"
-                       decoding="async"
-                       onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}" />
-                  
-                  <!-- Floating Suite Badge -->
-                  <div class="absolute top-3 start-3 z-10">
-                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-mono font-bold bg-[#0A2540]/85 text-sky-300 backdrop-blur-md border border-sky-400/30 shadow-xs">
-                      SUITE ${srv.suiteNum}
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Title & Specialist Under Image -->
-                <div class="pt-4">
-                  <span class="text-[10px] uppercase tracking-widest text-[#0070D2] font-bold block mb-1">
-                    ${t(srv.badgeEn, srv.badgeAr)}
-                  </span>
-                  <h3 class="text-base sm:text-lg font-bold text-[#0F2537] leading-snug line-clamp-2">
-                    ${t(srv.titleEn, srv.titleAr)}
-                  </h3>
-                  <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
-                    ${t(srv.shortDescEn, srv.shortDescAr)}
-                  </p>
-                </div>
-              </div>
-
-              <!-- Doctor Mini Avatar Pill -->
-              <div class="pt-3 border-t border-slate-100 flex items-center justify-between mt-auto">
-                <div class="flex items-center gap-2">
-                  <img src="${srv.doctorImage}"
-                       alt="${t(srv.doctorNameEn, srv.doctorNameAr)}"
-                       onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
-                       class="w-7 h-7 rounded-full object-cover border border-slate-200" />
-                  <div class="min-w-0">
-                    <div class="text-[11px] font-semibold text-[#0F2537] truncate">${t(srv.doctorNameEn, srv.doctorNameAr)}</div>
-                    <div class="text-[9.5px] text-slate-400 truncate">${t(srv.doctorRoleEn, srv.doctorRoleAr)}</div>
-                  </div>
-                </div>
-                <button type="button" data-explore-suite="${srv.id}"
-                        class="explore-suite-btn text-[11px] text-[#0070D2] hover:text-sky-600 font-semibold flex items-center gap-1 shrink-0 px-2.5 py-1 rounded-full bg-sky-50/80 hover:bg-sky-100 transition-all cursor-pointer">
-                  <span>${t('Explore', 'استكشف')}</span>
-                  <span class="text-xs rtl:rotate-180">&rarr;</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- 3. Hover Overlay View: Content with Frosted Glass Backdrop Blur -->
-            <div class="expert-card-hover-overlay">
-              <div class="expert-glass-content">
-                <div class="flex items-center justify-between mb-3">
-                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/20 text-sky-200 border border-white/25">
-                    SUITE ${srv.suiteNum}
-                  </span>
-                  <span class="text-[10px] text-sky-200/90 font-medium">
-                    ${t(srv.badgeEn, srv.badgeAr)}
-                  </span>
-                </div>
-
-                <h3 class="text-lg sm:text-xl font-extrabold text-white leading-tight mb-2">
-                  ${t(srv.titleEn, srv.titleAr)}
+                <h3 class="text-lg sm:text-xl font-bold text-[#0F2537] leading-snug line-clamp-1 mb-1.5" title="${srvTitle}">
+                  ${srvTitle}
                 </h3>
-
-                <p class="text-xs text-white/85 leading-relaxed mb-3.5">
-                  ${t(srv.shortDescEn, srv.shortDescAr)}
+                <p class="text-xs sm:text-sm text-slate-500 line-clamp-2 leading-relaxed mb-3.5">
+                  ${srvDesc}
                 </p>
 
-                <!-- 3 Bullets with Icons -->
-                <ul class="space-y-1.5 text-[11px] text-sky-100 mb-4">
-                  ${srv.bullets.map(b => `
-                    <li class="flex items-start gap-1.5">
-                      <span class="text-sky-300 font-bold shrink-0">•</span>
-                      <span>${t(b.en, b.ar)}</span>
-                    </li>
-                  `).join('')}
-                </ul>
+                <!-- Tech Highlight -->
+                <div class="text-[11px] text-slate-600 bg-slate-50 rounded-xl p-2.5 border border-slate-100 mb-4 flex items-center gap-2">
+                  <span class="text-[#0070D2] font-bold">⚡</span>
+                  <span class="truncate">${srvTech}</span>
+                </div>
+              </div>
 
-                <!-- Doctor Lead Strip & Action Button -->
-                <div class="pt-3 border-t border-white/20 flex items-center justify-between gap-3">
-                  <div class="flex items-center gap-2 min-w-0">
-                    <img src="${srv.doctorImage}"
-                         alt="${t(srv.doctorNameEn, srv.doctorNameAr)}"
-                         onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
-                         class="w-8 h-8 rounded-full object-cover border border-white/40 shadow-xs shrink-0" />
-                    <div class="min-w-0">
-                      <div class="text-xs font-bold text-white truncate">${t(srv.doctorNameEn, srv.doctorNameAr)}</div>
-                      <div class="text-[10px] text-sky-200/80 truncate">${t(srv.doctorRoleEn, srv.doctorRoleAr)}</div>
-                    </div>
+              <!-- Doctor & Actions Footer -->
+              <div class="pt-3.5 border-t border-slate-100 mt-auto flex flex-col gap-3">
+                <!-- Lead Specialist Doctor -->
+                <div class="flex items-center gap-2.5">
+                  <img src="${docImg}"
+                       alt="${docName}"
+                       onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
+                       class="w-8 h-8 rounded-full object-cover object-top border border-slate-200 shrink-0" />
+                  <div class="min-w-0 flex-1">
+                    <div class="text-xs font-bold text-[#0F2537] truncate">${docName}</div>
+                    <div class="text-[10px] text-slate-400 truncate">${docRole}</div>
                   </div>
+                </div>
 
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-2 gap-2 pt-1">
                   <button type="button"
-                          data-book-service="${srv.id}"
-                          class="book-suite-direct-btn px-4 py-2 rounded-full bg-white hover:bg-sky-50 text-[#0F2537] text-xs font-bold shadow-md transition-all shrink-0 cursor-pointer">
-                    ${t('Book Suite', 'حجز الجلسة')}
+                          onclick="openProductionBookingModal({ serviceId: '${srv.id}' })"
+                          class="w-full py-2 px-3 rounded-xl bg-[#0070D2] hover:bg-[#005bb5] text-white font-bold text-xs uppercase tracking-wider transition text-center shadow-xs cursor-pointer">
+                    ${t('Book Suite', 'حجز')}
+                  </button>
+                  <button type="button"
+                          onclick="openSuiteDossierModal('${srv.id}')"
+                          class="w-full py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs uppercase tracking-wider transition text-center cursor-pointer">
+                    ${t('Explore', 'التفاصيل')}
                   </button>
                 </div>
               </div>
             </div>
-
-          </div>
+          </article>
         `;
       }).join('');
 
-      const cards = container.querySelectorAll('.expert-care-card');
-      
-      if (isDesktop) {
-        cards.forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            cards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-          });
-        });
-
-        container.addEventListener('mouseleave', () => {
-          cards.forEach((c, idx) => {
-            if (idx === 0) c.classList.add('active');
-            else c.classList.remove('active');
-          });
-        });
+      // Render dots
+      if (dotsContainer) {
+        dotsContainer.innerHTML = services.map((_, i) => `
+          <button type="button"
+                  onclick="scrollToServiceIndex(${i})"
+                  aria-label="Go to suite ${i + 1}"
+                  class="service-dot transition-all duration-300 rounded-full cursor-pointer ${
+                    i === 0 ? 'w-7 h-2 bg-[#0070D2]' : 'w-2 h-2 bg-slate-200 hover:bg-slate-300'
+                  }"></button>
+        `).join('');
       }
 
-      container.querySelectorAll('.book-suite-direct-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          openProductionBookingModal({ serviceId: btn.dataset.bookService });
-        });
-      });
-
-      // Wire up Explore Suite buttons
-      container.querySelectorAll('.explore-suite-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          openSuiteDossierModal(btn.dataset.exploreSuite);
-        });
-      });
-
-      // On Mobile: Tapping any card opens its Suite Dossier Modal
-      if (!isDesktop) {
-        cards.forEach(card => {
-          card.addEventListener('click', (e) => {
-            if (!e.target.closest('button') && !e.target.closest('a')) {
-              openSuiteDossierModal(card.dataset.serviceId);
-            }
-          });
-        });
-      }
-
-      // Mobile Slider Dots & Controls
-      initServicesMobileSlider(container);
+      initServicesSliderControls();
     }
 
-    // =========================================================================
-    // MOBILE SUITE SLIDER CONTROLS & DOT SYNCHRONIZER
-    // =========================================================================
-    function initServicesMobileSlider(sliderContainer) {
-      if (!sliderContainer) return;
-      const dots = document.querySelectorAll('.suite-slider-dot');
-      const prevBtn = document.getElementById('prevSuiteMobileBtn');
-      const nextBtn = document.getElementById('nextSuiteMobileBtn');
+    function slideServicesNext() {
+      const track = document.getElementById('servicesSliderTrack');
+      if (!track) return;
+      const isRTL = document.documentElement.dir === 'rtl';
+      const card = track.querySelector('.service-slide-card');
+      const step = card ? card.offsetWidth + 24 : 360;
+      track.scrollBy({ left: isRTL ? -step : step, behavior: 'smooth' });
+    }
 
-      function updateActiveSuiteDot() {
-        if (window.innerWidth >= 1024 || !sliderContainer) return;
-        const cardWidth = sliderContainer.firstElementChild ? sliderContainer.firstElementChild.offsetWidth : 290;
-        const scrollLeft = Math.abs(sliderContainer.scrollLeft);
-        const activeIndex = Math.min(3, Math.max(0, Math.round(scrollLeft / (cardWidth + 14))));
+    function slideServicesPrev() {
+      const track = document.getElementById('servicesSliderTrack');
+      if (!track) return;
+      const isRTL = document.documentElement.dir === 'rtl';
+      const card = track.querySelector('.service-slide-card');
+      const step = card ? card.offsetWidth + 24 : 360;
+      track.scrollBy({ left: isRTL ? step : -step, behavior: 'smooth' });
+    }
 
+    function scrollToServiceIndex(index) {
+      const track = document.getElementById('servicesSliderTrack');
+      if (!track) return;
+      const cards = track.querySelectorAll('.service-slide-card');
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      }
+    }
+
+    function initServicesSliderControls() {
+      const track = document.getElementById('servicesSliderTrack');
+      if (!track || track.dataset.sliderInit) return;
+      track.dataset.sliderInit = '1';
+
+      // Scroll Event: Synchronize Dots & Counter
+      track.addEventListener('scroll', () => {
+        const card = track.querySelector('.service-slide-card');
+        if (!card) return;
+        const cardWidth = card.offsetWidth + 24;
+        const scrollLeft = Math.abs(track.scrollLeft);
+        const activeIndex = Math.min(sdoClinicData.services.length - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
+
+        const dots = document.querySelectorAll('.service-dot');
         dots.forEach((dot, idx) => {
           if (idx === activeIndex) {
-            dot.className = 'suite-slider-dot w-6 h-2 rounded-full bg-[#0070D2] transition-all cursor-pointer';
+            dot.className = 'service-dot transition-all duration-300 rounded-full cursor-pointer w-7 h-2 bg-[#0070D2]';
           } else {
-            dot.className = 'suite-slider-dot w-2 h-2 rounded-full bg-slate-200 transition-all cursor-pointer';
+            dot.className = 'service-dot transition-all duration-300 rounded-full cursor-pointer w-2 h-2 bg-slate-200 hover:bg-slate-300';
           }
         });
-      }
 
-      sliderContainer.addEventListener('scroll', updateActiveSuiteDot, { passive: true });
+        const counter = document.getElementById('servicesCounterText');
+        if (counter) {
+          const suiteNum = String(activeIndex + 1).padStart(2, '0');
+          counter.textContent = currentLang === 'ar'
+            ? `جناح ${suiteNum} من 10`
+            : `Suite ${suiteNum} / 10`;
+        }
+      }, { passive: true });
 
-      dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-          const idx = parseInt(dot.dataset.slideIndex, 10);
-          const cardWidth = sliderContainer.firstElementChild ? sliderContainer.firstElementChild.offsetWidth : 290;
-          const isRTL = document.documentElement.dir === 'rtl';
-          sliderContainer.scrollTo({
-            left: (isRTL ? -1 : 1) * idx * (cardWidth + 14),
-            behavior: 'smooth'
-          });
-        });
+      // Desktop Mouse Drag Support
+      let isDragging = false;
+      let startX = 0;
+      let startScroll = 0;
+
+      track.addEventListener('mousedown', (e) => {
+        if (e.target.closest('button, a')) return;
+        isDragging = true;
+        startX = e.pageX - track.offsetLeft;
+        startScroll = track.scrollLeft;
       });
 
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          const cardWidth = sliderContainer.firstElementChild ? sliderContainer.firstElementChild.offsetWidth : 290;
-          const isRTL = document.documentElement.dir === 'rtl';
-          sliderContainer.scrollBy({
-            left: (isRTL ? 1 : -1) * (cardWidth + 14),
-            behavior: 'smooth'
-          });
-        });
-      }
+      window.addEventListener('mouseup', () => { isDragging = false; });
 
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          const cardWidth = sliderContainer.firstElementChild ? sliderContainer.firstElementChild.offsetWidth : 290;
-          const isRTL = document.documentElement.dir === 'rtl';
-          sliderContainer.scrollBy({
-            left: (isRTL ? -1 : 1) * (cardWidth + 14),
-            behavior: 'smooth'
-          });
-        });
-      }
+      track.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        track.scrollLeft = startScroll - walk;
+      });
     }
 
-    // =========================================================================
-    // CLINICAL SUITE DOSSIER MODAL (Triggered by Explore buttons & Mobile Cards)
-    // =========================================================================
     function openSuiteDossierModal(suiteId) {
       const suite = flagshipSuites4.find(s => s.id === suiteId) || sdoClinicData.services.find(s => s.id === suiteId);
       if (!suite) return;
@@ -4093,7 +3979,7 @@
 
 
       // 4. Flagship Suites (Section 3)
-      buildServicesAccordionDOM();
+      renderServicesSlider();
 
       // 5. Specialists (Section 4)
       renderSpecialistsTrack();
@@ -4674,7 +4560,7 @@
 
     function renderTransformationTabs() {
       const categories = [
-        { id: 'all', en: 'All Cases (12)', ar: 'كل الحالات (12)' },
+        { id: 'all', en: 'All Cases (6)', ar: 'كل الحالات (6)' },
         { id: 'whitening', en: 'Whitening', ar: 'تبييض الليزر' },
         { id: 'ortho', en: 'Orthodontics', ar: 'تقويم الأسنان' },
         { id: 'implants', en: 'Implants', ar: 'زراعة الأسنان' },
