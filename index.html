@@ -1249,7 +1249,7 @@
           <a href="#services" id="navLinkServices" class="hover:text-[#0070D2] transition-colors">10 Clinical Suites</a>
           <a href="#specialists" id="navLinkSpecialists" class="hover:text-[#0070D2] transition-colors">Specialists (6)</a>
           <a href="#transformations" id="navLinkTransformations" class="hover:text-[#0070D2] transition-colors">Real Transformations</a>
-          <a href="#locations" id="navLinkBranches" class="hover:text-[#0070D2] transition-colors">3 Locations</a>
+          <button type="button" id="navLinkBranches" onclick="openLocationsModal(0)" class="hover:text-[#0070D2] transition-colors cursor-pointer text-xs font-semibold text-[#0A2540] bg-transparent border-none p-0">3 Locations</button>
         </nav>
 
         <!-- Actions: Bilingual Toggle (العربية / EN) + Phone + Book CTA -->
@@ -1362,11 +1362,11 @@
               <svg class="icon-xs text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               <span id="heroHoursText">Daily: 9:00 AM – 9:00 PM (Every day, 7 days a week)</span>
             </span>
-            <a href="#locations"
-               class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 transition-colors text-white no-underline">
+            <button type="button" onclick="openLocationsModal(0)"
+               class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 transition-colors text-white cursor-pointer">
               <svg class="icon-xs text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
               <span id="heroAddressText">Al Mushrif - Abu Dhabi - United Arab Emirates</span>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -1728,40 +1728,7 @@
         </div>
       </section>
 
-      <!-- =====================================================================
-           7. INTERACTIVE LOCATIONS & 3 ABU DHABI BRANCHES SECTION (#locations)
-              Matches Mockup Bottom Dark-Navy Locations Section + Live Map
-      ====================================================================== -->
-      <section id="locations" class="snap-section relative w-full bg-[#102A45] text-white min-h-screen min-h-[100dvh] flex flex-col justify-center py-8 sm:py-12 px-4 sm:px-8 lg:px-10" data-section-name="Locations">
-        <div class="max-w-6xl mx-auto w-full">
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 scroll-reveal-el stagger-1">
-            <div>
-              <span id="branchesEyebrow" class="text-[11px] uppercase tracking-[0.2em] text-sky-300 font-semibold block mb-2">
-                CLINICAL LOCATIONS • ABU DHABI &amp; AL DHAFRA
-              </span>
-              <h2 id="branchesHeadline" class="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
-                Locations &amp; 3 Specialized Branches
-              </h2>
-            </div>
-            <p id="branchesSubhead" class="text-xs sm:text-sm text-sky-100/80 max-w-md">
-              Open Daily 9:00 AM – 9:00 PM, 7 days a week across Al Mushrif, Al Markaziyah (Electra Road), and Al Sila.
-            </p>
-          </div>
-
-          <!-- 3 Branch Selector Cards -->
-          <div id="branchTabsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5 scroll-reveal-el stagger-3">
-            <!-- Populated from sdoClinicData.branches -->
-          </div>
-
-          <!-- Active Branch Detail & Live Embedded Google Map -->
-          <div id="activeBranchDetailCard" class="rounded-2xl bg-[#17395C] border border-white/15 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 mb-2 scroll-reveal-scale stagger-4">
-            <!-- Populated dynamically -->
-          </div>
-        </div>
-      </section>
-
-      <!-- 60px Space After Location Section (Matches Dark-Navy Theme) -->
-      <div id="locationsBottomSpacer" class="w-full h-[60px] bg-[#102A45] pointer-events-none shrink-0" aria-hidden="true"></div>
+      
 
   <!-- =========================================================================
        8. STICKY BOTTOM FLOATING CONCIERGE BAR (Resting: Just Button -> Hover: Full Box)
@@ -1808,6 +1775,17 @@
           </a>
         </div>
 
+        <!-- Location Icon Button (ALWAYS VISIBLE alongside Booking Button) -->
+        <button type="button" id="stickyOpenLocationsBtn" onclick="openLocationsModal(0)"
+                class="bg-[#122A44] hover:bg-[#1B3E63] border border-sky-300/40 hover:border-sky-300 text-sky-200 hover:text-white text-xs sm:text-sm font-semibold px-3.5 sm:px-4 py-2.5 rounded-full backdrop-blur-md transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0 shadow-md"
+                title="View Branches & Locations">
+          <svg class="w-4 h-4 text-sky-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span id="stickyLocationBtnText" class="hidden xs:inline">Locations</span>
+        </button>
+
         <!-- Primary Booking Button (ALWAYS VISIBLE & Hero in Rest State) -->
         <button type="button" id="stickyOpenBookingBtn" data-open-booking="true"
                 class="cta-pulse-glow bg-gradient-to-r from-[#0070D2] to-[#38BDF8] hover:from-[#0284C7] hover:to-[#0070D2] text-white text-xs sm:text-sm font-bold px-5 sm:px-7 py-2.5 rounded-full shadow-lg transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0">
@@ -1819,6 +1797,106 @@
           </svg>
           <span id="stickyBookBtnText">Book Appointment</span>
         </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       LOCATIONS & 3 SPECIALIZED BRANCHES POPUP MODAL (Matches Reference Design)
+  ========================================================================== -->
+  <div id="locationsModalOverlay" class="fixed inset-0 z-50 hidden bg-[#030914]/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="locModalMainTitle">
+    <div class="relative w-full max-w-5xl bg-[#091523] border border-sky-500/25 rounded-3xl p-5 sm:p-8 text-white shadow-[0_25px_70px_rgba(0,0,0,0.85)] my-auto overflow-hidden">
+      <!-- Ambient decorative glows -->
+      <div class="absolute -top-32 -left-32 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-[#0070D2]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Close Button -->
+      <button type="button" onclick="closeLocationsModal()" class="absolute top-4 sm:top-6 right-4 sm:right-6 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer z-20" aria-label="Close modal">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Modal Header: Eyebrow + Title & 3 Branch Tabs -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 pe-10 md:pe-12">
+        <div>
+          <span id="locModalEyebrow" class="text-[11px] font-bold uppercase tracking-[0.2em] text-sky-400 block mb-1.5">
+            CLINICAL LOCATIONS • ABU DHABI &amp; AL DHAFRA
+          </span>
+          <h2 id="locModalMainTitle" class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            Locations &amp; 3 Specialized Branches
+          </h2>
+        </div>
+
+        <!-- 3 Branch Tabs (Al Mushrif Main, Al Markaziyah, Al Dhafra) -->
+        <div class="bg-[#0B1A2C] border border-sky-400/20 p-1 rounded-full flex items-center gap-1 shrink-0" id="locModalTabsContainer">
+          <button type="button" onclick="switchLocationModalBranch(0)" id="locTab0"
+                  class="loc-tab-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-[#183552] text-white shadow-sm">
+            Al Mushrif Main
+          </button>
+          <button type="button" onclick="switchLocationModalBranch(1)" id="locTab1"
+                  class="loc-tab-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer text-slate-400 hover:text-white">
+            Al Markaziyah
+          </button>
+          <button type="button" onclick="switchLocationModalBranch(2)" id="locTab2"
+                  class="loc-tab-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer text-slate-400 hover:text-white">
+            Al Dhafra
+          </button>
+        </div>
+      </div>
+
+      <!-- Inner Main Content Card (Matches Reference Image) -->
+      <div class="bg-[#071320] border border-sky-400/20 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 relative shadow-xl">
+        
+        <!-- Left Column: Details & Actions -->
+        <div class="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div>
+            <!-- Status Pill -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-xs font-medium mb-4">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="locModalStatus">Open Today • 9 AM - 9 PM</span>
+            </div>
+
+            <!-- Branch Name -->
+            <h3 id="locModalBranchName" class="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug mb-3">
+              Specialized Dental &amp; Orthodontic Center (SDO)
+            </h3>
+
+            <!-- Description -->
+            <p id="locModalBranchDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+              Our primary architectural clinical facility in Al Mushrif, Abu Dhabi. Home to our complete multidisciplinary dental team and advanced surgical suites.
+            </p>
+
+            <!-- Feature Badges -->
+            <div id="locModalPills" class="flex flex-wrap gap-2">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Bottom Action Bar -->
+          <div class="pt-5 border-t border-slate-700/60 flex flex-wrap items-center gap-3 sm:gap-4">
+            <button type="button" id="locModalBookBtn" onclick="closeLocationsModal(); openProductionBookingModal({ branchId: sdoClinicData.branches[activeBranchIndex].id });"
+                    class="cta-pulse-glow bg-[#0070D2] hover:bg-sky-500 text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full flex items-center gap-2 transition-all shadow-md cursor-pointer">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke-width="2"/></svg>
+              <span id="locModalBookBtnText">Book Appointment</span>
+            </button>
+
+            <a id="locModalPhoneLink" href="tel:+971024439688"
+               class="text-slate-300 hover:text-white text-xs sm:text-sm font-medium flex items-center gap-1.5 transition-colors no-underline">
+              <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <span id="locModalPhoneText">+971 02 443 9688</span>
+            </a>
+
+            <a id="locModalMapsLink" href="https://maps.google.com" target="_blank" rel="noopener"
+               class="text-slate-400 hover:text-sky-300 text-xs sm:text-sm underline transition-colors whitespace-nowrap">
+              <span id="locModalMapsText">View on Google Maps</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Stylized Architectural Dark Vector Map -->
+        <div id="locModalMapArea" class="lg:col-span-6 relative bg-[#060F19] min-h-[300px] sm:min-h-[380px] flex items-center justify-center overflow-hidden border-t lg:border-t-0 lg:border-l border-sky-400/15">
+          <!-- Injected dynamically with stylized vector map + glowing pin -->
+        </div>
 
       </div>
     </div>
@@ -4180,6 +4258,8 @@
       renderBranchesSection();
 
       // 8. Sticky Bottom Bar
+      const stickyLocText = document.getElementById('stickyLocationBtnText');
+      if (stickyLocText) stickyLocText.textContent = t('Locations', 'الفروع');
       const stickyTitle = document.getElementById('stickyBarTitle');
       if (stickyTitle) stickyTitle.textContent = t(
         'SDO Concierge Desk • Open Daily 9:00 AM – 9:00 PM',
@@ -4814,94 +4894,268 @@
       `;
     }
 
-    function renderBranchesSection() {
-      const tabsContainer = document.getElementById('branchTabsContainer');
-      tabsContainer.innerHTML = sdoClinicData.branches.map((br, idx) => {
-        const isSelected = idx === activeBranchIndex;
-        return `
-          <button type="button" data-branch-idx="${idx}"
-                  class="text-start p-4 rounded-2xl border transition-all cursor-pointer ${
-                    isSelected
-                      ? 'bg-[#0070D2] text-white border-sky-300 shadow-lg'
-                      : 'bg-[#17395C] hover:bg-[#1E4670] text-white/90 border-white/15'
-                  }">
-            <div class="flex items-center justify-between gap-2 mb-1.5">
-              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/15 text-sky-200">
-                ${t(br.badgeEn, br.badgeAr)}
-              </span>
-              <span class="text-[10px] font-mono text-sky-100" dir="ltr">${br.landline}</span>
-            </div>
-            <div class="font-bold text-sm truncate">${t(br.nameEn, br.nameAr)}</div>
-            <div class="text-xs text-sky-100/80 truncate mt-0.5">${t(br.districtEn, br.districtAr)}</div>
-          </button>
-        `;
-      }).join('');
+    
+    // =========================================================================
+    // LOCATIONS POPUP MODAL ENGINE & STYLIZED DARK VECTOR MAP
+    // =========================================================================
+    function openLocationsModal(branchIndex = 0) {
+      activeBranchIndex = branchIndex;
+      const modal = document.getElementById('locationsModalOverlay');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      updateLocationsModalUI();
+    }
 
-      tabsContainer.querySelectorAll('button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          activeBranchIndex = Number(btn.dataset.branchIdx);
-          renderBranchesSection();
-        });
-      });
+    function closeLocationsModal() {
+      const modal = document.getElementById('locationsModalOverlay');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
 
-      const br = sdoClinicData.branches[activeBranchIndex];
-      document.getElementById('activeBranchDetailCard').innerHTML = `
-        <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-5">
-          <div>
-            <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="px-3 py-1 rounded-full bg-emerald-400/15 text-emerald-300 border border-emerald-400/30 text-[11px] font-semibold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span>${t(br.statusEn, br.statusAr)}</span>
-              </span>
-              <span class="text-xs text-sky-200/75 font-mono" dir="ltr">${br.coordinates}</span>
-            </div>
+    function switchLocationModalBranch(idx) {
+      activeBranchIndex = idx;
+      updateLocationsModalUI();
+    }
 
-            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">${t(br.nameEn, br.nameAr)}</h3>
-            <p class="text-xs sm:text-sm text-sky-100/85 leading-relaxed mb-4">${t(br.descriptionEn, br.descriptionAr)}</p>
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLocationsModal();
+      }
+    });
 
-            <div class="bg-white/10 border border-white/15 rounded-xl p-3.5 text-xs text-white space-y-1 mb-4">
-              <div class="font-bold text-sky-300">${t('Specialist Coverage:', 'تغطية الأطباء والاستشاريين:')}</div>
-              <div>${t(br.doctorCoverageEn, br.doctorCoverageAr)}</div>
-              ${br.visitingSpecialistsEn ? `<div class="text-amber-200 pt-1 border-t border-white/10">${t(br.visitingSpecialistsEn, br.visitingSpecialistsAr)}</div>` : ''}
-            </div>
+    // Close modal on click backdrop
+    document.addEventListener('click', (e) => {
+      const modal = document.getElementById('locationsModalOverlay');
+      if (modal && e.target === modal) {
+        closeLocationsModal();
+      }
+    });
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-sky-100/90">
-              ${(currentLang === 'ar' ? br.amenitiesAr : br.amenitiesEn).map(am => `
-                <div class="flex items-center gap-2">
-                  <span class="w-4 h-4 rounded-full bg-sky-400/20 text-sky-300 flex items-center justify-center text-[10px] font-bold shrink-0">&#10003;</span>
-                  <span>${am}</span>
-                </div>
-              `).join('')}
-            </div>
+    function generateDarkVectorMap(branchIdx, br) {
+      let pinX = 260, pinY = 190;
+      if (branchIdx === 1) {
+        pinX = 270; pinY = 175;
+      } else if (branchIdx === 2) {
+        pinX = 250; pinY = 200;
+      }
+
+      return `
+        <div class="relative w-full h-full min-h-[300px] sm:min-h-[380px] bg-[#060F1A] flex items-center justify-center overflow-hidden group/map cursor-pointer" onclick="window.open('${br.googleMapsUrl}', '_blank')" title="${t('Open in Google Maps', 'فتح في خرائط جوجل')}">
+          <svg viewBox="0 0 520 380" class="w-full h-full object-cover select-none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur1"/>
+                <feGaussianBlur stdDeviation="14" result="blur2"/>
+                <feMerge>
+                  <feMergeNode in="blur2"/>
+                  <feMergeNode in="blur1"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <linearGradient id="roadCyanGlow" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.8"/>
+                <stop offset="60%" stop-color="#38BDF8" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0.1"/>
+              </linearGradient>
+              <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.02)" stroke-width="1"/>
+              </pattern>
+            </defs>
+
+            <!-- Base Background -->
+            <rect width="520" height="380" fill="#07111D"/>
+            <rect width="520" height="380" fill="url(#gridPattern)"/>
+
+            <!-- City Blocks / Parcels (Dark architectural footprint polygons) -->
+            <rect x="25" y="25" width="120" height="90" rx="10" fill="#0A1828" stroke="#142F4D" stroke-width="1.5"/>
+            <path d="M45,45 h80 v50 h-80 z" fill="#081320" stroke="#122A44" stroke-width="1"/>
+
+            <path d="M175,25 L290,25 L260,115 L165,115 Z" fill="#0A1828" stroke="#142F4D" stroke-width="1.5"/>
+            <path d="M190,45 L265,45 L245,95 L180,95 Z" fill="#081320" stroke="#122A44" stroke-width="1"/>
+
+            <path d="M380,25 L495,25 L495,125 L340,125 Z" fill="#0A1828" stroke="#142F4D" stroke-width="1.5"/>
+            <path d="M400,45 L475,45 L475,105 L360,105 Z" fill="#081320" stroke="#122A44" stroke-width="1"/>
+
+            <rect x="25" y="140" width="130" height="110" rx="12" fill="#0A1828" stroke="#142F4D" stroke-width="1.5"/>
+            <circle cx="90" cy="195" r="28" fill="#081320" stroke="#122A44" stroke-width="1"/>
+
+            <!-- Center Mid/Right Island Block (Directly next to Pin) -->
+            <path d="M185,140 L310,140 L280,250 L170,250 Z" fill="#0C2036" stroke="#183D63" stroke-width="1.5"/>
+            <path d="M205,160 L285,160 L265,230 L190,230 Z" fill="#081320" stroke="#122A44" stroke-width="1"/>
+
+            <path d="M420,150 L495,150 L495,270 L380,270 Z" fill="#0A1828" stroke="#142F4D" stroke-width="1.5"/>
+            <path d="M440,170 L480,170 L480,250 L400,250 Z" fill="#081320" stroke="#122A44" stroke-width="1"/>
+
+            <rect x="25" y="275" width="115" height="85" rx="10" fill="#0A1828" stroke="#142F4D" stroke-width="1.5"/>
+            <path d="M165,275 L260,275 L230,360 L150,360 Z" fill="#0A1828" stroke="#142F4D" stroke-width="1.5"/>
+            <path d="M350,295 L495,295 L495,360 L320,360 Z" fill="#0A1828" stroke="#142F4D" stroke-width="1.5"/>
+
+            <!-- Roads (Stylized dark angled avenues) -->
+            <line x1="0" y1="128" x2="520" y2="128" stroke="#0D1E31" stroke-width="16"/>
+            <line x1="0" y1="262" x2="520" y2="262" stroke="#0D1E31" stroke-width="16"/>
+            <line x1="155" y1="0" x2="155" y2="380" stroke="#0D1E31" stroke-width="14"/>
+
+            <!-- Main Diagonal Avenue (Matches Screenshot Boulevard) -->
+            <path d="M 365 0 L 295 140 L 235 270 L 180 380" stroke="#11273F" stroke-width="26" stroke-linecap="round"/>
+            <path d="M 365 0 L 295 140 L 235 270 L 180 380" stroke="#1A3E66" stroke-width="16" stroke-linecap="round"/>
+
+            <!-- Neon Cyan Glowing Avenue Border -->
+            <path d="M 378 0 L 308 140 L 248 270 L 193 380" stroke="url(#roadCyanGlow)" stroke-width="2.5" stroke-linecap="round" filter="url(#cyanGlow)"/>
+
+            <!-- Glowing Location Pin Teardrop Marker -->
+            <g id="mapPinGroup" transform="translate(${pinX}, ${pinY})">
+              <!-- Expanding Radar Pulse Ring 1 -->
+              <circle r="22" fill="#00F0FF" opacity="0.2">
+                <animate attributeName="r" values="18;34;18" dur="2.4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.25;0.04;0.25" dur="2.4s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Pulse Ring 2 -->
+              <circle r="12" fill="#00F0FF" opacity="0.4"/>
+
+              <!-- Glowing Cyan Marker Body -->
+              <path d="M 0 0 C -9 -8 -13 -16 -13 -24 C -13 -32 -6 -38 0 -38 C 6 -38 13 -32 13 -24 C 13 -16 9 -8 0 0 Z"
+                    fill="#00F0FF" filter="url(#cyanGlow)"/>
+
+              <!-- Center Contrast Hole in Pin -->
+              <circle cx="0" cy="-24" r="5" fill="#07111D"/>
+            </g>
+          </svg>
+
+          <!-- Overlay Coordinates Badge -->
+          <div class="absolute top-3.5 start-3.5 flex items-center gap-2">
+            <span class="px-2.5 py-1 rounded-full bg-[#081728]/85 backdrop-blur-md border border-sky-400/25 text-[10px] sm:text-xs text-sky-200 font-semibold flex items-center gap-1.5 shadow-md">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+              <span dir="ltr">${br.coordinates}</span>
+            </span>
           </div>
 
-          <div class="pt-4 border-t border-white/15 flex flex-wrap items-center justify-between gap-3">
-            <div class="flex flex-wrap items-center gap-2.5">
-              <button type="button" id="bookThisBranchBtn"
-                      class="px-5 py-2.5 rounded-full bg-[#0070D2] hover:bg-sky-500 text-white text-xs font-bold transition-colors cursor-pointer">
-                ${t('Book at this Branch', 'احجز في هذا الفرع')}
-              </button>
-              <a href="tel:${br.landlineClean}" class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold no-underline" dir="ltr">
-                ${br.landline}
-              </a>
-              <a href="${br.googleMapsUrl}" target="_blank" rel="noopener" class="px-4 py-2 rounded-full border border-white/25 hover:border-sky-300 text-xs font-semibold text-sky-200 no-underline">
-                ${t('Google Maps', 'خرائط جوجل')} &nearr;
-              </a>
-            </div>
+          <!-- Overlay Google Maps Button -->
+          <div class="absolute bottom-3.5 end-3.5 flex items-center gap-2">
+            <span class="px-3 py-1.5 rounded-full bg-[#0070D2]/90 hover:bg-[#0070D2] backdrop-blur-md text-white text-xs font-semibold flex items-center gap-1.5 shadow-lg group-hover/map:scale-105 transition-transform">
+              <span>${t('View on Google Maps', 'فتح في خرائط جوجل')}</span>
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </span>
           </div>
-        </div>
-
-        <div class="lg:col-span-5 min-h-[300px] bg-slate-900 relative">
-          <iframe src="${br.embedMapUrl}"
-                  title="${t(br.nameEn, br.nameAr)}"
-                  class="w-full h-full min-h-[300px] border-0"
-                  loading="lazy"></iframe>
         </div>
       `;
+    }
 
-      document.getElementById('bookThisBranchBtn').addEventListener('click', () => {
-        openProductionBookingModal({ branchId: br.id });
-      });
+    function updateLocationsModalUI() {
+      if (!sdoClinicData || !sdoClinicData.branches) return;
+      const br = sdoClinicData.branches[activeBranchIndex] || sdoClinicData.branches[0];
+
+      // Update Tab Styles
+      for (let i = 0; i < 3; i++) {
+        const tab = document.getElementById('locTab' + i);
+        if (tab) {
+          if (i === activeBranchIndex) {
+            tab.className = 'loc-tab-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-[#183552] text-white shadow-sm';
+          } else {
+            tab.className = 'loc-tab-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer text-slate-400 hover:text-white';
+          }
+          // Tab text translations
+          if (i === 0) tab.textContent = t('Al Mushrif Main', 'المشرف (الرئيسي)');
+          if (i === 1) tab.textContent = t('Al Markaziyah', 'المركزية');
+          if (i === 2) tab.textContent = t('Al Dhafra', 'الظفرة (السلع)');
+        }
+      }
+
+      // Eyebrow and Main Title
+      const eyebrow = document.getElementById('locModalEyebrow');
+      if (eyebrow) eyebrow.textContent = t('CLINICAL LOCATIONS • ABU DHABI & AL DHAFRA', 'الفروع التخصصية • أبوظبي ومنطقة الظفرة');
+      const mainTitle = document.getElementById('locModalMainTitle');
+      if (mainTitle) mainTitle.textContent = t('Locations & 3 Specialized Branches', 'الفروع و3 مراكز تخصصية');
+
+      // Status Pill
+      const statusEl = document.getElementById('locModalStatus');
+      if (statusEl) statusEl.textContent = t('Open Today • 9 AM - 9 PM', 'مفتوح اليوم • 9 ص - 9 م');
+
+      // Branch Name and Description
+      const nameEl = document.getElementById('locModalBranchName');
+      if (nameEl) nameEl.textContent = t(br.nameEn, br.nameAr);
+
+      const descEl = document.getElementById('locModalBranchDesc');
+      if (descEl) descEl.textContent = t(br.descriptionEn, br.descriptionAr);
+
+      // Amenities Pills
+      const pillsContainer = document.getElementById('locModalPills');
+      if (pillsContainer) {
+        let pills = [];
+        if (activeBranchIndex === 0) {
+          pills = [
+            { icon: 'car', text: t('Free Parking', 'مواقف خاصة مجانية') },
+            { icon: 'wheelchair', text: t('Wheelchair Access', 'مسار مخصص للكراسي المتحركة') },
+            { icon: 'scan', text: t('3D Scanning Suite', 'جناح المسح ثلاثي الأبعاد') }
+          ];
+        } else if (activeBranchIndex === 1) {
+          pills = [
+            { icon: 'car', text: t('Parking & Valet', 'مواقف سيارات وسهولة وصول') },
+            { icon: 'rx', text: t('On-Site Pharmacy', 'صيدلية متكاملة في الموقع') },
+            { icon: 'scan', text: t('Specialized Suites', 'عيادات تخصصية متكاملة') }
+          ];
+        } else {
+          pills = [
+            { icon: 'car', text: t('Free Parking', 'مواقف سيارات ميسرة') },
+            { icon: 'family', text: t('Family Medicine', 'طب الأسرة ورعاية شاملة') },
+            { icon: 'scan', text: t('Visiting Specialists', 'استشاريون زائرون مرتين شهرياً') }
+          ];
+        }
+
+        const iconSvg = (type) => {
+          if (type === 'car') {
+            return '<svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 3C2 11.2 2 11.6 2 12v4c0 .6.4 1 1 1h2m14 0a2 2 0 11-4 0m4 0a2 2 0 10-4 0M7 17a2 2 0 11-4 0m4 0a2 2 0 10-4 0"/></svg>';
+          }
+          if (type === 'wheelchair') {
+            return '<svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 8h4a2 2 0 012 2v6a2 2 0 01-2 2h-4a2 2 0 01-2-2v-6a2 2 0 012-2z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 18v3m-4-3v3"/></svg>';
+          }
+          if (type === 'rx') {
+            return '<svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m8 4a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v12z"/></svg>';
+          }
+          if (type === 'family') {
+            return '<svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>';
+          }
+          return '<svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>';
+        };
+
+        pillsContainer.innerHTML = pills.map(p => `
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#102438] border border-sky-400/20 text-sky-200 text-xs font-medium">
+            ${iconSvg(p.icon)}
+            <span>${p.text}</span>
+          </span>
+        `).join('');
+      }
+
+      // Book CTA Text
+      const bookBtnText = document.getElementById('locModalBookBtnText');
+      if (bookBtnText) bookBtnText.textContent = t('Book Appointment', 'احجز موعدك');
+
+      // Phone Link
+      const phoneLink = document.getElementById('locModalPhoneLink');
+      const phoneText = document.getElementById('locModalPhoneText');
+      if (phoneLink && phoneText) {
+        phoneLink.href = 'tel:' + br.landlineClean;
+        phoneText.textContent = br.landline;
+      }
+
+      // Google Maps Link
+      const mapsLink = document.getElementById('locModalMapsLink');
+      const mapsText = document.getElementById('locModalMapsText');
+      if (mapsLink) mapsLink.href = br.googleMapsUrl;
+      if (mapsText) mapsText.textContent = t('View on Google Maps', 'عرض في خرائط جوجل');
+
+      // Dark Vector Map
+      const mapArea = document.getElementById('locModalMapArea');
+      if (mapArea) {
+        mapArea.innerHTML = generateDarkVectorMap(activeBranchIndex, br);
+      }
+    }
+
+    // Keep renderBranchesSection as alias to updateLocationsModalUI for backwards compatibility
+    function renderBranchesSection() {
+      updateLocationsModalUI();
     }
 
         function openDoctorDossierModal(docId) {
@@ -5517,7 +5771,7 @@ _Confirmed via SDO Center Production Booking Studio_`;
     <button type="button" class="snap-dot" data-target-sec="services" title="3. Flagship Suites" aria-label="Go to Suites"></button>
     <button type="button" class="snap-dot" data-target-sec="specialists" title="4. Specialists" aria-label="Go to Specialists"></button>
     <button type="button" class="snap-dot" data-target-sec="transformations" title="5. Transformations & Reviews" aria-label="Go to Transformations"></button>
-    <button type="button" class="snap-dot" data-target-sec="locations" title="6. Locations & Contacts" aria-label="Go to Locations"></button>
+    
   </aside>
 
 
