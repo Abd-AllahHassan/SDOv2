@@ -906,17 +906,17 @@
 
     /* Center Active Doctor Card Glow */
     .doctor-3d-slot.is-center .doctor-orbit-card {
-      border-color: rgba(56, 189, 248, 0.85) !important;
-      box-shadow: 0 28px 60px -12px rgba(0, 0, 0, 0.85), 0 0 40px 0 rgba(56, 189, 248, 0.35) !important;
+      border-color: #0070D2 !important;
+      box-shadow: 0 25px 60px -12px rgba(0, 112, 210, 0.28), 0 10px 30px rgba(15, 37, 55, 0.12) !important;
     }
 
     /* Background Left/Right Cards in Circular Arc */
     .doctor-3d-slot.is-side .doctor-orbit-card {
-      border-color: rgba(255, 255, 255, 0.16) !important;
-      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.75) !important;
+      border-color: rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 15px 35px -10px rgba(15, 37, 55, 0.12) !important;
     }
     .doctor-3d-slot.is-side:hover .doctor-orbit-card {
-      border-color: rgba(56, 189, 248, 0.6) !important;
+      border-color: #0070D2 !important;
     }
 
     /* Glowing Circular Orbital Rings Behind Cards */
@@ -937,8 +937,8 @@
       max-width: 92vw;
       max-height: 92vw;
       border-radius: 9999px;
-      border: 1.5px dashed rgba(56, 189, 248, 0.32);
-      box-shadow: inset 0 0 80px rgba(56, 189, 248, 0.08), 0 0 60px rgba(56, 189, 248, 0.12);
+      border: 1.5px dashed rgba(0, 112, 210, 0.25);
+      box-shadow: inset 0 0 80px rgba(56, 189, 248, 0.08), 0 0 60px rgba(0, 112, 210, 0.08);
       transform: rotateX(68deg) translateZ(-120px);
       transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.25, 1);
     }
@@ -950,8 +950,8 @@
       max-width: 75vw;
       max-height: 75vw;
       border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(10, 30, 52, 0) 70%);
+      border: 1px solid rgba(0, 112, 210, 0.12);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(240, 249, 255, 0) 70%);
       transform: rotateX(68deg) translateZ(-150px);
     }
 
@@ -982,8 +982,8 @@
       width: 100%;
       overflow: hidden;
       border-radius: 24px;
-      background: #0E2740;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #FFFFFF;
+      border: 1px solid rgba(226, 232, 240, 0.9);
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.45s ease;
       user-select: none;
       transform-style: preserve-3d;
@@ -1521,10 +1521,10 @@
            5. ASYMMETRIC SPLIT CAROUSEL — "MEET THE MINDS BEHIND YOUR SMILE"
               All 6 Specialists from sdoClinicData.doctors
       ====================================================================== -->
-      <section id="specialists" class="snap-section py-12 sm:py-16 px-4 sm:px-8 lg:px-10 border-t border-slate-100 bg-[#08182B] text-white overflow-hidden w-full select-none" data-section-name="Specialists">
-        <!-- Ambient Radial Glow Behind Stage -->
+      <section id="specialists" class="snap-section py-12 sm:py-16 px-4 sm:px-8 lg:px-10 border-t border-slate-200/80 bg-gradient-to-b from-white via-sky-50/30 to-white text-[#0F2537] overflow-hidden w-full select-none" data-section-name="Specialists">
+        <!-- Ambient Subtle Sky Glow Behind Stage -->
         <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div class="w-[850px] h-[450px] bg-sky-500/10 blur-[140px] rounded-full"></div>
+          <div class="w-[850px] h-[450px] bg-sky-400/15 blur-[120px] rounded-full pointer-events-none"></div>
         </div>
 
         <div class="max-w-7xl mx-auto w-full relative z-10">
@@ -1532,17 +1532,17 @@
           <!-- Section Header: Clean "OUR DOCTORS" Title + Left/Right Arrow Navigation -->
           <div class="flex items-center justify-between mb-4 sm:mb-6">
             <div>
-              <h2 id="specHeadline" class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight uppercase">
-                <span>OUR</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500">DOCTORS</span>
+              <h2 id="specHeadline" class="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#0F2537] leading-tight uppercase">
+                <span>OUR</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0070D2] via-sky-500 to-[#0A2540]">DOCTORS</span>
               </h2>
             </div>
 
             <!-- Prev / Next Orbit Buttons -->
             <div class="flex items-center gap-2">
-              <button id="specPrevBtn" type="button" onclick="slideDoctorPrev()" aria-label="Rotate Left" class="w-11 h-11 rounded-xl bg-[#17395C] border border-white/15 hover:border-sky-400 hover:bg-[#0070D2] text-white flex items-center justify-center transition duration-200 shadow-lg cursor-pointer group">
+              <button id="specPrevBtn" type="button" onclick="slideDoctorPrev()" aria-label="Rotate Left" class="w-11 h-11 rounded-xl bg-white border border-slate-200 hover:border-[#0070D2] hover:bg-[#0070D2] hover:text-white text-[#0F2537] flex items-center justify-center transition duration-200 shadow-sm cursor-pointer group">
                 <span class="text-base rtl:rotate-180">&#10226;</span>
               </button>
-              <button id="specNextBtn" type="button" onclick="slideDoctorNext()" aria-label="Rotate Right" class="w-11 h-11 rounded-xl bg-[#17395C] border border-white/15 hover:border-sky-400 hover:bg-[#0070D2] text-white flex items-center justify-center transition duration-200 shadow-lg cursor-pointer group">
+              <button id="specNextBtn" type="button" onclick="slideDoctorNext()" aria-label="Rotate Right" class="w-11 h-11 rounded-xl bg-white border border-slate-200 hover:border-[#0070D2] hover:bg-[#0070D2] hover:text-white text-[#0F2537] flex items-center justify-center transition duration-200 shadow-sm cursor-pointer group">
                 <span class="text-base rtl:rotate-180">&#10227;</span>
               </button>
             </div>
@@ -1563,9 +1563,9 @@
           </div>
 
           <!-- Slider Footer: Pagination Dots & Counter -->
-          <div class="mt-4 flex items-center justify-between gap-4 pt-4 border-t border-white/10">
+          <div class="mt-4 flex items-center justify-between gap-4 pt-4 border-t border-slate-200">
             <div id="doctorPaginationDots" class="flex items-center gap-2"></div>
-            <span id="doctorSlideCounterText" class="text-xs font-mono uppercase tracking-wider text-sky-200/80">
+            <span id="doctorSlideCounterText" class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
               Doctor 1 of 6
             </span>
           </div>
@@ -4309,8 +4309,8 @@
       const specHead = document.getElementById('specHeadline');
       if (specHead) {
         specHead.innerHTML = currentLang === 'ar'
-          ? '<span>أطباؤنا</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500">المتميزون</span>'
-          : '<span>OUR</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500">DOCTORS</span>';
+          ? '<span>أطباؤنا</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0070D2] via-sky-500 to-[#0A2540]">المتميزون</span>'
+          : '<span>OUR</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0070D2] via-sky-500 to-[#0A2540]">DOCTORS</span>';
       }
 
       track.innerHTML = filteredDoctorsList.map((doc, idx) => {
@@ -4348,8 +4348,8 @@
 
               <!-- TOP FLOATING BAR: Rating Badge Only (No specification covering doctor head) -->
               <div class="relative z-30 p-4 flex items-center justify-end">
-                <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#0A1E34]/80 backdrop-blur-md border border-white/10 text-xs font-bold text-white shadow">
-                  <span class="text-amber-400 text-xs">★</span>
+                <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/80 text-xs font-bold text-[#0F2537] shadow-sm">
+                  <span class="text-amber-500 text-xs">★</span>
                   <span>${profile.rating}</span>
                 </div>
               </div>
@@ -4572,7 +4572,7 @@
                   class="transition-all duration-300 rounded-full cursor-pointer ${
                     isActive
                       ? 'w-7 h-2.5 bg-gradient-to-r from-sky-400 to-[#0070D2] shadow-[0_0_12px_rgba(56,189,248,0.7)]'
-                      : 'w-2.5 h-2.5 bg-white/20 hover:bg-white/40'
+                      : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
                   }"></button>
         `;
       }).join('');
@@ -5522,7 +5522,7 @@ _Confirmed via SDO Center Production Booking Studio_`;
 
 
   <!-- CUSTOM CURSOR DRAG FOLLOWER -->
-  <div id="cursorFollower" class="px-3.5 py-2 rounded-full bg-[#0A1E34]/95 border border-sky-400 text-sky-300 text-[11px] font-extrabold uppercase tracking-wider shadow-[0_0_25px_rgba(56,189,248,0.4)] flex items-center gap-1.5 backdrop-blur-md">
+  <div id="cursorFollower" class="px-3.5 py-2 rounded-full bg-white/95 border border-slate-200 text-[#0F2537] text-[11px] font-extrabold uppercase tracking-wider shadow-xl flex items-center gap-1.5 backdrop-blur-md">
     <span>⇄</span>
     <span id="cursorFollowerText">Drag / Scroll</span>
   </div>
