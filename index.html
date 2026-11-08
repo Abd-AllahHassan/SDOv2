@@ -4934,6 +4934,33 @@
       }
     });
 
+    function generateLiveLocationMap(branchIdx, br) {
+      return `
+        <div class="relative w-full h-full min-h-[320px] sm:min-h-[400px] bg-slate-900 overflow-hidden flex flex-col group/livemap">
+          <iframe src="${br.embedMapUrl}"
+                  title="${t(br.nameEn, br.nameAr)}"
+                  class="w-full h-full min-h-[320px] sm:min-h-[400px] border-0"
+                  loading="lazy"
+                  allowfullscreen=""
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="absolute top-3.5 start-3.5 flex items-center gap-2 pointer-events-none z-10">
+            <span class="px-3 py-1.5 rounded-full bg-[#081728]/90 backdrop-blur-md border border-sky-400/30 text-[10px] sm:text-xs text-sky-200 font-semibold flex items-center gap-1.5 shadow-lg">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span class="text-white font-bold">${t('Live Location', 'الموقع المباشر')}</span>
+              <span class="text-sky-300/80 font-mono" dir="ltr">• ${br.coordinates}</span>
+            </span>
+          </div>
+          <div class="absolute bottom-3.5 end-3.5 flex items-center gap-2 z-10">
+            <a href="${br.googleMapsUrl}" target="_blank" rel="noopener"
+               class="px-3.5 py-1.5 rounded-full bg-[#0070D2]/95 hover:bg-[#0070D2] text-white text-xs font-semibold flex items-center gap-1.5 shadow-xl transition-all hover:scale-105 no-underline backdrop-blur-md border border-white/20">
+              <span>${t('Open in Google Maps', 'فتح في خرائط جوجل')}</span>
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
     function generateDarkVectorMap(branchIdx, br) {
       let pinX = 260, pinY = 190;
       if (branchIdx === 1) {
@@ -5149,7 +5176,7 @@
       // Dark Vector Map
       const mapArea = document.getElementById('locModalMapArea');
       if (mapArea) {
-        mapArea.innerHTML = generateDarkVectorMap(activeBranchIndex, br);
+        mapArea.innerHTML = generateLiveLocationMap(activeBranchIndex, br);
       }
     }
 
