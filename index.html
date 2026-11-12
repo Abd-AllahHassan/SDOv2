@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Specialized Dental & Orthodontic Center (SDO) | المركز التخصصي لطب وتقويم الأسنان</title>
+  <!-- SDO Tab Logo / Favicons -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192x192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="./favicon-192x192.png" />
+  <link rel="shortcut icon" href="./favicon.ico" />
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Plus Jakarta Sans (EN) & Cairo (AR) -->
@@ -869,18 +875,65 @@
     }
   
     /* =========================================================================
-       3D CIRCULAR ORBITAL SPECIALISTS SLIDER (SDO LUXURY STYLING)
+       3D CIRCULAR ORBITAL SPECIALISTS SLIDER (SDO LUXURY STYLING - FULLY DYNAMIC & RESPONSIVE)
     ========================================================================= */
+    #specialists {
+      --doc-card-h: clamp(480px, calc(100vh - 220px), 525px);
+      --doc-card-w: clamp(330px, calc(var(--doc-card-h) * 0.71), 375px);
+      --doc-stage-h: var(--doc-card-h);
+      padding-top: clamp(0.75rem, 1.8vh, 1.75rem) !important;
+      padding-bottom: clamp(4.75rem, 7.5vh, 6rem) !important;
+    }
+
+    @media (max-height: 760px) {
+      #specialists {
+        --doc-card-h: clamp(430px, calc(100vh - 190px), 475px);
+        --doc-card-w: clamp(300px, calc(var(--doc-card-h) * 0.71), 340px);
+        --doc-stage-h: var(--doc-card-h);
+        padding-top: 0.5rem !important;
+        padding-bottom: 4.5rem !important;
+      }
+      #specialists .initial-info {
+        padding: 0.85rem !important;
+      }
+    }
+
+    @media (max-height: 640px) {
+      #specialists {
+        --doc-card-h: clamp(360px, calc(100vh - 150px), 410px);
+        --doc-card-w: clamp(260px, calc(var(--doc-card-h) * 0.71), 295px);
+        --doc-stage-h: var(--doc-card-h);
+        padding-top: 0.25rem !important;
+        padding-bottom: 3.75rem !important;
+      }
+      #specialists .initial-info {
+        padding: 0.65rem !important;
+      }
+      #specialists .initial-info h3 {
+        font-size: 1rem !important;
+      }
+    }
+
+    @media (max-width: 639px) {
+      #specialists {
+        --doc-card-w: clamp(270px, 82vw, 330px);
+        --doc-card-h: clamp(430px, 66vh, 490px);
+        --doc-stage-h: var(--doc-card-h);
+        padding-bottom: 4.5rem !important;
+      }
+    }
+
     .circular-stage {
       perspective: 1600px;
       transform-style: preserve-3d;
       position: relative;
-      height: 590px;
+      height: var(--doc-stage-h, 540px);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: visible;
       user-select: none;
+      transition: height 0.3s ease;
     }
 
     .carousel-3d-track {
@@ -896,10 +949,10 @@
 
     .doctor-3d-slot {
       position: absolute;
-      width: 370px;
+      width: var(--doc-card-w, 360px);
       max-width: 86vw;
-      height: 520px;
-      transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.25, 1), opacity 0.6s ease, filter 0.6s ease;
+      height: var(--doc-card-h, 480px);
+      transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.25, 1), opacity 0.6s ease, filter 0.6s ease, width 0.3s ease, height 0.3s ease;
       will-change: transform, opacity, filter;
       transform-style: preserve-3d;
     }
@@ -932,8 +985,8 @@
     }
 
     .orbital-ring-main {
-      width: 820px;
-      height: 820px;
+      width: clamp(520px, 68vh, 820px);
+      height: clamp(520px, 68vh, 820px);
       max-width: 92vw;
       max-height: 92vw;
       border-radius: 9999px;
@@ -945,8 +998,8 @@
 
     .orbital-ring-inner {
       position: absolute;
-      width: 580px;
-      height: 580px;
+      width: clamp(380px, 50vh, 580px);
+      height: clamp(380px, 50vh, 580px);
       max-width: 75vw;
       max-height: 75vw;
       border-radius: 9999px;
@@ -978,10 +1031,10 @@
 
     .doctor-orbit-card {
       position: relative;
-      height: 520px;
+      height: 100%;
       width: 100%;
       overflow: hidden;
-      border-radius: 24px;
+      border-radius: clamp(16px, 2.2vw, 24px);
       background: #FFFFFF;
       border: 1px solid rgba(226, 232, 240, 0.9);
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.45s ease;
@@ -1007,6 +1060,7 @@
     }
 
     .doctor-orbit-card .initial-info {
+      padding: clamp(0.75rem, 2vh, 1.5rem);
       transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -1023,7 +1077,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 1.5rem;
+      padding: clamp(0.75rem, 2vh, 1.35rem);
       background: linear-gradient(
         180deg,
         rgba(10, 30, 52, 0.4) 0%,
@@ -1036,6 +1090,8 @@
       opacity: 0;
       transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease;
       z-index: 20;
+      overflow-y: auto;
+      scrollbar-width: none;
     }
 
     .doctor-orbit-card:hover .hover-drawer,
@@ -1096,7 +1152,7 @@
     ========================================================================= */
     .service-slide-card {
       position: relative !important;
-      height: 530px !important;
+      height: 420px !important;
       border-radius: 24px !important;
       overflow: hidden !important;
       background: #FFFFFF !important;
@@ -1170,7 +1226,7 @@
     .service-slide-card .resting-img-frame {
       position: relative !important;
       width: 100% !important;
-      height: 220px !important;
+      height: 160px !important;
       border-radius: 18px !important;
       overflow: hidden !important;
       background: #0F2537 !important;
@@ -1213,7 +1269,7 @@
       -webkit-backdrop-filter: blur(18px) !important;
       border: 1px solid rgba(255, 255, 255, 0.22) !important;
       border-radius: 20px !important;
-      padding: 18px !important;
+      padding: 14px !important;
       color: #FFFFFF !important;
       box-shadow: 0 16px 36px rgba(5, 20, 42, 0.5) !important;
     }
@@ -1276,52 +1332,110 @@
            1B. LUXURY ENTRANCE HERO: 3D CRYSTAL MOLAR & DUAL-SIDE WORD ANIMATIONS
                (Matches User Design Screenshot)
       ====================================================================== -->
-      <section id="crystalEntranceHero" class="snap-section relative bg-white text-[#0A2540] py-12 sm:py-16 lg:py-20 px-4 sm:px-8 border-b border-slate-100 overflow-hidden select-none w-full" data-section-name="Vision">
-        <!-- Soft Cyan Ambient Glow Behind 3D Tooth -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-[radial-gradient(circle,rgba(56,189,248,0.22)_0%,rgba(224,242,254,0.38)_45%,transparent_70%)] rounded-full pointer-events-none blur-3xl"></div>
+      <section id="crystalEntranceHero" class="snap-section relative bg-white text-[#0F2537] pt-8 pb-12 sm:pt-12 sm:pb-16 lg:py-16 px-4 sm:px-8 lg:px-12 border-b border-slate-100 overflow-hidden select-none w-full in-view" data-section-name="Vision">
+        <!-- Soft Ambient Cyan Glow Behind Doctors in Right Half -->
+        <div class="absolute top-1/2 end-12 sm:end-20 -translate-y-1/2 w-[540px] h-[540px] sm:w-[620px] sm:h-[620px] bg-[radial-gradient(circle,rgba(56,189,248,0.16)_0%,rgba(224,242,254,0.3)_42%,transparent_70%)] rounded-full pointer-events-none blur-3xl"></div>
 
-        <!-- Giant Architectural Watermark Across Bottom -->
-        <div id="crystalWatermark" class="absolute bottom-1 inset-x-0 text-center pointer-events-none select-none overflow-hidden opacity-[0.04] tracking-[0.25em] font-extrabold text-5xl sm:text-7xl lg:text-9xl text-slate-900 whitespace-nowrap" aria-hidden="true">
-          SDO CLINIC • SOFT. DEFINED.
+        <!-- Giant Architectural Watermark Behind Left Column -->
+        <div id="crystalWatermark" class="absolute bottom-2 start-4 sm:start-8 text-[120px] sm:text-[160px] lg:text-[200px] font-black text-slate-900/[0.025] select-none pointer-events-none leading-none tracking-tight font-sans" aria-hidden="true">
+          SDO
         </div>
 
-        <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
+        <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[580px] lg:min-h-[640px]">
           
-          <!-- Left Column: Big Vision Headline & Editorial Philosophy (Slides in from Left) -->
-          <div id="crystalLeftCol" class="lg:col-span-4 text-center lg:text-start crystal-anim-left">
-            <h1 id="crystalLeftHeadline" class="text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-extrabold text-[#0A2540] tracking-tight leading-[1.08] mb-4">
-              Not all smiles<br />need fixing, some<br />need vision
+          <!-- Left Column: Vision Headline, Subtitle, CTAs & Location Metadata -->
+          <div id="crystalLeftCol" class="lg:col-span-7 xl:col-span-6 flex flex-col items-start text-start z-10 crystal-anim-left">
+            <!-- Vision Headline in Site Font -->
+            <h1 id="crystalLeftHeadline" class="text-4xl sm:text-5xl lg:text-[54px] xl:text-[60px] font-bold text-[#0F2537] tracking-tight leading-[1.08] mb-4">
+              Your Trusted Dental Care.<br />Best Teeth <span class="text-[#0070D2]">Result Provider.</span>
             </h1>
-            <p id="crystalLeftSubtitle" class="text-slate-500 text-xs sm:text-sm lg:text-[15px] leading-relaxed max-w-sm mx-auto lg:mx-0">
-              We're a premium orthodontic and aesthetic studio crafting confident smiles for those who settle for nothing ordinary.
-            </p>
-          </div>
 
-          <!-- Center Column: Floating 3D Crystal Molar with Caustic Reflections (Zooms & Levitates) -->
-          <div id="crystalToothCol" class="lg:col-span-4 flex items-center justify-center crystal-anim-molar-zoom">
-            <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 flex items-center justify-center">
-              <img src="assets/sdo/crystal-molar-transparent.png"
-                   alt="SDO Precision Crystal Dental Molar"
-                   onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
-                   class="w-full h-full object-contain crystal-molar-float drop-shadow-[0_20px_40px_rgba(2,132,199,0.30)]" />
+            <!-- Subtitle Paragraph -->
+            <p id="crystalLeftSubtitle" class="text-slate-500 text-xs sm:text-sm lg:text-[15px] leading-relaxed max-w-lg mb-8">
+              We listen first, plan with precision, and deliver gentle, comprehensive dental care tailored to your smile and your comfort.
+            </p>
+
+            <!-- CTA Buttons Row -->
+            <div class="flex flex-wrap items-center gap-3.5 mb-8">
+              <!-- Primary Dark Navy Pill Button -->
+              <button type="button" data-open-booking="true"
+                      class="group inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-full bg-[#0A1E34] hover:bg-[#071320] text-white text-xs sm:text-sm font-semibold shadow-lg shadow-slate-900/15 transition-all transform hover:scale-[1.02] cursor-pointer">
+                <svg class="w-4 h-4 text-sky-300 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke-width="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="8" y1="2" x2="8" y2="6" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="3" y1="10" x2="21" y2="10" stroke-width="2"/>
+                </svg>
+                <span id="heroPrimaryCtaText">Book Your Consultation</span>
+              </button>
+
+              <!-- Secondary Ghost Pill Button -->
+              <a href="#transformations"
+                 class="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 hover:text-[#0F2537] text-xs sm:text-sm font-semibold transition-all cursor-pointer no-underline shadow-2xs">
+                <span id="heroSecondaryCtaText">Explore Smile Gallery</span>
+              </a>
+            </div>
+
+            <!-- Location & 3D Digital Smile Architecture Meta -->
+            <div class="flex flex-col gap-1 text-xs pt-3 border-t border-slate-100/90 w-full max-w-md">
+              <button type="button" data-open-branch="0"
+                      class="inline-flex items-center gap-1.5 font-semibold text-slate-700 hover:text-[#0070D2] transition-colors cursor-pointer p-0 bg-transparent border-none text-start">
+                <svg class="w-3.5 h-3.5 text-[#0070D2] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span id="heroLocationMetaText">Al Mushrif, Abu Dhabi</span>
+              </button>
+              <div id="heroSubMetaText" class="text-[11px] text-slate-400 ms-5">
+                3D Digital Smile Architecture
+              </div>
             </div>
           </div>
 
-          <!-- Right Column: Luxury Care Made Personal & Schedule CTA (Slides in from Right) -->
-          <div id="crystalRightCol" class="lg:col-span-4 text-center lg:text-start flex flex-col items-center lg:items-start justify-center crystal-anim-right">
-            <h2 id="crystalRightHeadline" class="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-bold text-[#0A2540] tracking-tight leading-[1.12] mb-6">
-              Luxury care<br />made personal
-            </h2>
-            <button type="button" data-open-booking="true"
-                    class="group inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#0070D2] to-[#0A85EA] hover:from-[#085EA8] hover:to-[#0070D2] text-white text-xs sm:text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all transform hover:scale-105 cursor-pointer">
-              <svg class="w-4 h-4 text-sky-200 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke-width="2"/>
-                <line x1="16" y1="2" x2="16" y2="6" stroke-width="2" stroke-linecap="round"/>
-                <line x1="8" y1="2" x2="8" y2="6" stroke-width="2" stroke-linecap="round"/>
-                <line x1="3" y1="10" x2="21" y2="10" stroke-width="2"/>
-              </svg>
-              <span id="crystalScheduleBtnText">Schedule a visit</span>
-            </button>
+          <!-- Right Column: Doctors Cutout Image, Orbital Concentric Rings & Floating Badges -->
+          <div id="crystalToothCol" class="lg:col-span-5 xl:col-span-6 flex items-center justify-center relative min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] crystal-anim-molar-zoom">
+            <!-- Concentric Architectural Orbital Rings Behind the Doctors -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <!-- Outer Ring -->
+              <div class="w-[460px] h-[460px] sm:w-[520px] sm:h-[520px] rounded-full border border-sky-200/50 absolute"></div>
+              <!-- Middle Dashed Ring -->
+              <div class="w-[340px] h-[340px] sm:w-[390px] sm:h-[390px] rounded-full border border-sky-300/35 border-dashed absolute"></div>
+              <!-- Inner Ring with Soft Radial Gradient -->
+              <div class="w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] rounded-full border border-sky-400/25 bg-[radial-gradient(circle,rgba(56,189,248,0.2)_0%,rgba(224,242,254,0.35)_45%,transparent_70%)] absolute"></div>
+              <!-- Subtle Crosshairs -->
+              <div class="w-[500px] sm:w-[560px] h-px bg-gradient-to-r from-transparent via-sky-300/30 to-transparent absolute"></div>
+              <div class="h-[500px] sm:h-[560px] w-px bg-gradient-to-b from-transparent via-sky-300/30 to-transparent absolute"></div>
+            </div>
+
+            <!-- Group Photo of Specialists Staff (dr.png) -->
+            <div class="relative w-full max-w-[520px] lg:max-w-[560px] flex items-end justify-center">
+              <img src="assets/dr.png"
+                   alt="SDO Specialists Faculty Team"
+                   onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/assets/dr.png';}"
+                   class="relative z-10 w-full h-auto object-contain drop-shadow-[0_20px_35px_rgba(15,37,55,0.14)] pointer-events-none select-none transition-transform duration-700 hover:scale-[1.01]" />
+
+              <!-- Floating Badge 1: Top Right "Meet SDO Experts" -->
+              <div class="absolute top-4 sm:top-8 end-1 sm:end-3 z-20 bg-white/90 backdrop-blur-md border border-white/80 shadow-[0_12px_28px_rgba(15,37,55,0.12)] rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 flex items-center gap-2 transform hover:-translate-y-0.5 transition-transform">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <span id="heroBadge1Text" class="text-xs sm:text-[13px] font-bold text-[#0F2537] whitespace-nowrap">
+                  Meet SDO Experts
+                </span>
+              </div>
+
+              <!-- Floating Badge 2: Bottom Left "Bespoke Aesthetics ★ 4.9" -->
+              <div class="absolute bottom-8 sm:bottom-12 start-0 sm:start-2 z-20 bg-white/95 backdrop-blur-md border border-white/80 shadow-[0_16px_36px_rgba(15,37,55,0.14)] rounded-2xl px-4 py-2.5 sm:px-4.5 sm:py-3 flex flex-col gap-0.5 transform hover:-translate-y-0.5 transition-transform">
+                <div class="flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#0F2537] whitespace-nowrap">
+                  <svg class="w-3.5 h-3.5 text-[#0070D2]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z"/>
+                  </svg>
+                  <span id="heroBadge2Title">Bespoke Aesthetics</span>
+                </div>
+                <div class="flex items-center gap-1 text-[11px] font-bold text-amber-500">
+                  <span>★</span>
+                  <span class="text-[#0F2537]">4.9</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -1385,11 +1499,11 @@
             <div class="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 text-center flex flex-col justify-between backdrop-blur-md scroll-reveal-scale stagger-4">
               <div>
                 <div class="flex items-center justify-center gap-1.5 text-3xl sm:text-4xl font-bold text-white tracking-tight" dir="ltr">
-                  <span class="counter-num" data-target="5.0" data-decimals="1">0.0</span>
+                  <span class="counter-num" data-target="4.98" data-decimals="2">0.00</span>
                   <span class="text-amber-400 text-2xl">★</span>
                 </div>
-                <div id="bench1Title" class="text-xs font-medium text-sky-100 mt-1">Verified Google Rating (5/5 = 100%)</div>
-                <div id="bench1Sub" class="text-[11px] text-white/60 mt-0.5">5 Rectangular Pillars = 100% Satisfaction</div>
+                <div id="bench1Title" class="text-xs font-medium text-sky-100 mt-1">Verified Google Rating (4.98 / 5.0)</div>
+                <div id="bench1Sub" class="text-[11px] text-white/60 mt-0.5">4.98 ★ Average Patient Satisfaction</div>
               </div>
               <div class="mt-3">
                 <div id="ratingFiveRects" class="flex items-center gap-1.5" dir="ltr">
@@ -1400,7 +1514,7 @@
                   <div class="shape-segment-block"></div>
                 </div>
                 <div class="flex justify-between text-[10px] text-sky-200/75 mt-1.5 font-mono" dir="ltr">
-                  <span>1/5</span><span>2/5</span><span>3/5</span><span>4/5</span><span>5/5 (100%)</span>
+                  <span>1/5</span><span>2/5</span><span>3/5</span><span>4/5</span><span>4.98 ★</span>
                 </div>
               </div>
             </div>
@@ -1521,7 +1635,7 @@
            5. ASYMMETRIC SPLIT CAROUSEL — "MEET THE MINDS BEHIND YOUR SMILE"
               All 6 Specialists from sdoClinicData.doctors
       ====================================================================== -->
-      <section id="specialists" class="snap-section py-12 sm:py-16 px-4 sm:px-8 lg:px-10 border-t border-slate-200/80 bg-gradient-to-b from-white via-sky-50/30 to-white text-[#0F2537] overflow-hidden w-full select-none" data-section-name="Specialists">
+      <section id="specialists" class="snap-section px-4 sm:px-8 lg:px-10 border-t border-slate-200/80 bg-gradient-to-b from-white via-sky-50/30 to-white text-[#0F2537] overflow-hidden w-full select-none" data-section-name="Specialists">
         <!-- Ambient Subtle Sky Glow Behind Stage -->
         <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div class="w-[850px] h-[450px] bg-sky-400/15 blur-[120px] rounded-full pointer-events-none"></div>
@@ -1530,7 +1644,7 @@
         <div class="max-w-7xl mx-auto w-full relative z-10">
           
           <!-- Section Header: Clean "OUR DOCTORS" Title + Left/Right Arrow Navigation -->
-          <div class="flex items-center justify-between mb-4 sm:mb-6">
+          <div class="flex items-center justify-between mb-2 sm:mb-4">
             <div>
               <h2 id="specHeadline" class="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#0F2537] leading-tight uppercase">
                 <span>OUR</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0070D2] via-sky-500 to-[#0A2540]">DOCTORS</span>
@@ -1549,7 +1663,7 @@
           </div>
 
           <!-- 3D Circular Orbit Stage Viewport -->
-          <div id="doctorSliderViewport" class="circular-stage cursor-grab active:cursor-grabbing select-none my-2">
+          <div id="doctorSliderViewport" class="circular-stage cursor-grab active:cursor-grabbing select-none my-1">
             <!-- Glowing Circular Orbital Ring Background -->
             <div class="orbital-ring-container">
               <div id="orbitalRingMain" class="orbital-ring-main"></div>
@@ -1563,7 +1677,7 @@
           </div>
 
           <!-- Slider Footer: Pagination Dots & Counter -->
-          <div class="mt-4 flex items-center justify-between gap-4 pt-4 border-t border-slate-200">
+          <div class="mt-2.5 sm:mt-3 flex items-center justify-between gap-4 pt-2.5 sm:pt-3 border-t border-slate-200">
             <div id="doctorPaginationDots" class="flex items-center gap-2"></div>
             <span id="doctorSlideCounterText" class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
               Doctor 1 of 6
@@ -1585,7 +1699,7 @@
             Real stories. Real smiles.
           </h2>
           <p id="transSubhead" class="text-xs sm:text-sm text-slate-500">
-            6 documented clinical smile transformations paired with 100% verified 5.0★ Google patient reviews in Abu Dhabi.
+            6 documented clinical smile transformations paired with 100% verified 4.98★ Google patient reviews in Abu Dhabi.
           </p>
         </div>
 
@@ -1603,30 +1717,30 @@
             <div>
               <div class="flex flex-wrap items-center gap-2 mb-3">
                 <span id="activeCaseCategoryBadge" class="px-2.5 py-1 rounded-full bg-[#0070D2]/10 text-[#0070D2] text-[10px] font-bold uppercase tracking-wider">
-                  WHITENING
+                  VENEERS
                 </span>
                 <span id="activeCaseShadeBadge" class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-semibold">
-                  A4 → B1 (+8 Shades)
+                  High-Luster Pearl White
                 </span>
               </div>
 
               <h3 id="activeCaseTitle" class="text-xl font-semibold tracking-tight text-[#0F2537] leading-snug mb-2.5">
-                Cold Laser Whitening &amp; Deep Stain Lifting
+                Hollywood Smile Ceramic Veneers &amp; Diastema Closure
               </h3>
 
               <p id="activeCaseDesc" class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Severe coffee, tea, and smoking extrinsic stains completely dissolved without pulp sensitivity in one session.
+                Ultra-thin porcelain veneers correcting incisal edge wear, anterior gaps (diastema), and smile symmetry.
               </p>
             </div>
 
             <div class="pt-3 border-t border-slate-200 space-y-2 text-xs">
               <div class="flex items-center justify-between">
                 <span id="caseLeadDoctorLabel" class="text-slate-400">Lead Specialist:</span>
-                <span id="activeCaseDoctor" class="font-semibold text-[#0F2537]">Dr. Aya Atef Saad</span>
+                <span id="activeCaseDoctor" class="font-semibold text-[#0F2537]">Dr. Fowzaan Feroz</span>
               </div>
               <div class="flex items-center justify-between">
                 <span id="caseDurationLabel" class="text-slate-400">Protocol Duration:</span>
-                <span id="activeCaseDuration" class="font-semibold text-[#0070D2]">45 Mins Single Session</span>
+                <span id="activeCaseDuration" class="font-semibold text-[#0070D2]">2 Visits Protocol</span>
               </div>
             </div>
 
@@ -1652,7 +1766,7 @@
               <!-- After Layer (Base Image) -->
               <div class="absolute inset-0 w-full h-full pointer-events-none select-none">
                 <img id="afterSmileImg"
-                     src="assets/sdo/split-whitening-after.webp"
+                     src="assets/sdo/split-veneers-after.webp"
                      alt="After SDO Transformation"
                      draggable="false"
                      onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
@@ -1667,7 +1781,7 @@
                    style="clip-path: inset(0 50% 0 0);"
                    class="absolute inset-0 w-full h-full z-10 pointer-events-none select-none">
                 <img id="beforeSmileImg"
-                     src="assets/sdo/split-whitening-before.webp"
+                     src="assets/sdo/split-veneers-before.webp"
                      alt="Before SDO Transformation"
                      draggable="false"
                      onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/'+this.getAttribute('src');}"
@@ -1693,13 +1807,13 @@
             </p>
           </div>
 
-          <!-- Right Column (4 cols): Verified 5.0★ Google Reviews Card -->
+          <!-- Right Column (4 cols): Verified 4.98★ Google Reviews Card -->
           <div class="lg:col-span-4 scroll-reveal-right stagger-5">
             <div class="rounded-2xl bg-gradient-to-br from-[#1B4268] to-[#102944] text-white p-6 shadow-md">
               <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center gap-2">
                   <span class="px-2.5 py-1 rounded-full bg-white/15 text-[10px] font-bold tracking-wider uppercase">
-                    TRUSTINDEX 5.0 ★
+                    TRUSTINDEX 4.98 ★
                   </span>
                   <span id="reviewSpotlightBadge" class="px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-200 border border-amber-300/30 text-[10px] font-medium">
                     Verified Review
@@ -1715,7 +1829,7 @@
               <div class="flex items-center justify-between pt-4 mt-4 border-t border-white/15">
                 <div class="flex items-center gap-1 text-amber-300 text-xs">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                  <span class="text-[10px] text-white/80 ms-1">5.0 / 5.0 (100%)</span>
+                  <span class="text-[10px] text-white/80 ms-1">4.98 / 5.0 (99.6%)</span>
                 </div>
                 <div class="flex items-center gap-2" dir="ltr">
                   <button type="button" id="revPrevBtn" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center text-white text-xs cursor-pointer">&#8249;</button>
@@ -1812,7 +1926,7 @@
       <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-[#0070D2]/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <!-- Close Button -->
-      <button type="button" onclick="closeLocationsModal()" class="absolute top-4 sm:top-6 right-4 sm:right-6 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer z-20" aria-label="Close modal">
+      <button type="button" onclick="closeLocationsModal()" class="absolute top-4 sm:top-6 right-4 sm:right-6 rtl:right-auto rtl:left-4 sm:rtl:left-6 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer z-20" aria-label="Close modal">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
@@ -1857,17 +1971,12 @@
             </div>
 
             <!-- Branch Name -->
-            <h3 id="locModalBranchName" class="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug mb-3">
+            <h3 id="locModalBranchName" class="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug mb-5">
               Specialized Dental &amp; Orthodontic Center (SDO)
             </h3>
 
-            <!-- Description -->
-            <p id="locModalBranchDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-              Our primary architectural clinical facility in Al Mushrif, Abu Dhabi. Home to our complete multidisciplinary dental team and advanced surgical suites.
-            </p>
-
             <!-- Feature Badges -->
-            <div id="locModalPills" class="flex flex-wrap gap-2">
+            <div id="locModalPills" class="flex flex-wrap gap-2 mb-2">
               <!-- Populated dynamically -->
             </div>
           </div>
@@ -2372,7 +2481,7 @@
     "editorialBadgeEn": "ARCHITECTURAL SMILE PHILOSOPHY",
     "editorialBadgeAr": "فلسفة الابتسامة المعمارية",
     "headlineEn": "A Patient-Centered Sanctuary for Dental Artistry & Clinical Rigor",
-    "headlineAr": "ملاذ طبي يجمع بين دقة الجراحة وأناقة الابتسامة",
+    "headlineAr": "ملاذ طبي يجمع بين الدقة وأناقة الابتسامة",
     "storyEn": "At SDO Center, we believe true dental care transcends mechanical repair. It is a dialogue of trust, clinical transparency, and architectural aesthetic harmony. Our multidisciplinary specialists work in concert within a serene, sterile clinical sanctuary designed to eliminate dental apprehension and deliver natural results that endure for decades.",
     "storyAr": "في مركز SDO نؤمن بأن طب الأسنان ليس مجرد إجراء علاجي، بل هو فن متكامل يقوم على الثقة والشفافية والتناغم المعماري لملامح الوجه. يتعاون نخبة أطبائنا في بيئة استشفائية هادئة ومعقمة صُممت لتبديد أي خوف وتوفير نتائج تدوم لسنوات طويلة.",
     "stats": [
@@ -2775,7 +2884,7 @@
       "url": "https://sdocenter.com/services/orthodontics/",
       "shortTitleEn": "Ortho",
       "shortTitleAr": "التقويم",
-      "image": "assets/services/service-ortho-implants.webp"
+      "image": "assets/Orthodontics & Dentofacial Alignment.jpg"
     },
     {
       "id": "invisalign",
@@ -2813,7 +2922,7 @@
       "url": "https://sdocenter.com/services/invisalign/",
       "shortTitleEn": "Aligners",
       "shortTitleAr": "إنفزلاين",
-      "image": "assets/sdo/split-ortho-after.webp"
+      "image": "assets/Clear Aligners Studio.jpg"
     },
     {
       "id": "cosmetic-dentistry",
@@ -2851,7 +2960,7 @@
       "url": "https://sdocenter.com/cosmetic-dentistry/",
       "shortTitleEn": "Hollywood Smile",
       "shortTitleAr": "ابتسامة هوليوود",
-      "image": "assets/services/service-veneers.webp"
+      "image": "assets/Cosmetic Dentistry & Hollywood Smile.jpg"
     },
     {
       "id": "teeth-whitening",
@@ -2889,7 +2998,7 @@
       "url": "https://sdocenter.com/services/teeth-whitening/",
       "shortTitleEn": "Laser",
       "shortTitleAr": "تبييض الليزر",
-      "image": "assets/sdo/split-whitening-after.webp"
+      "image": "assets/In-Clinic Cold Laser Teeth Whitening.jpg"
     },
     {
       "id": "gum-treatment",
@@ -2931,7 +3040,7 @@
       "url": "https://sdocenter.com/services/gum-treatment/",
       "shortTitleEn": "Gums",
       "shortTitleAr": "جراحة اللثة",
-      "image": "assets/sdo/split-gums-after.webp"
+      "image": "assets/Gums Treatment & Periodontal Surgery.jpg"
     },
     {
       "id": "dental-implants",
@@ -2973,7 +3082,7 @@
       "url": "https://sdocenter.com/restorative-dentistry/",
       "shortTitleEn": "Implants",
       "shortTitleAr": "زراعة الأسنان",
-      "image": "assets/sdo/split-implants-after.webp"
+      "image": "assets/Dental Implants & Bone Reconstruction.jpg"
     },
     {
       "id": "root-canal",
@@ -3011,7 +3120,7 @@
       "url": "https://sdocenter.com/services/root-canal-treatment/",
       "shortTitleEn": "Micro-Endo",
       "shortTitleAr": "عصب مجهري",
-      "image": "assets/sdo/crystal-molar-tooth.jpg"
+      "image": "assets/Micro-Endodontics.jpg"
     },
     {
       "id": "restorative-dentistry",
@@ -3049,7 +3158,7 @@
       "url": "https://sdocenter.com/restorative-dentistry/",
       "shortTitleEn": "Restorative",
       "shortTitleAr": "التركيبات",
-      "image": "assets/sdo/split-veneers-after.webp"
+      "image": "assets/Restorative Dentistry & Prosthetics.jpg"
     },
     {
       "id": "dental-cleaning",
@@ -3139,7 +3248,7 @@
       "url": "https://sdocenter.com/services/dental-cleaning/",
       "shortTitleEn": "6-Step Hygiene",
       "shortTitleAr": "تنظيف 6 خطوات",
-      "image": "assets/sdo/split-cleaning-after.webp"
+      "image": "assets/Dental Hygiene & The 6-Step Protocol.jpg"
     },
     {
       "id": "pediatric-dentistry",
@@ -3177,10 +3286,25 @@
       "url": "https://sdocenter.com/services/dental-care-for-children/",
       "shortTitleEn": "Pediatric",
       "shortTitleAr": "أسنان الأطفال",
-      "image": "assets/services/service-preventive.webp"
+      "image": "assets/Pediatric Dentistry & Gentle Youth Care.jpg"
     }
   ],
   "transformations": [
+    {
+      "id": "case-veneers-1",
+      "category": "veneers",
+      "titleEn": "Hollywood Smile Ceramic Veneers & Diastema Closure",
+      "titleAr": "ابتسامة هوليوود وإغلاق الفراغات بقشور السيراميك",
+      "doctorEn": "Dr. Fowzaan Feroz",
+      "doctorAr": "د. فوزان فيروز",
+      "durationEn": "2 Visits Protocol",
+      "durationAr": "جلستان سريريتان فقط",
+      "shadeShift": "High-Luster Pearl White",
+      "beforeImg": "assets/sdo/split-veneers-before.webp",
+      "afterImg": "assets/sdo/split-veneers-after.webp",
+      "descEn": "Ultra-thin porcelain veneers correcting incisal edge wear, anterior gaps (diastema), and smile symmetry.",
+      "descAr": "عدسات خزفية فائقة الدقة تعالج تآكل أطراف الأسنان وتغلق الفراغات الأمامية مع تبييض دائم جذاب."
+    },
     {
       "id": "case-whitening-1",
       "category": "whitening",
@@ -3225,21 +3349,6 @@
       "afterImg": "assets/sdo/split-implants-after.webp",
       "descEn": "Comprehensive implant rehabilitation replacing severely broken and missing teeth with biological biocompatible zirconia bridges.",
       "descAr": "إعادة بناء وتأهيل شامل لأسنان الفك المفقودة والمتآكلة بجسور زركونيا حيوية فائقة المتانة والجمال."
-    },
-    {
-      "id": "case-veneers-1",
-      "category": "veneers",
-      "titleEn": "Hollywood Smile Ceramic Veneers & Diastema Closure",
-      "titleAr": "ابتسامة هوليوود وإغلاق الفراغات بقشور السيراميك",
-      "doctorEn": "Dr. Fowzaan Feroz",
-      "doctorAr": "د. فوزان فيروز",
-      "durationEn": "2 Visits Protocol",
-      "durationAr": "جلستان سريريتان فقط",
-      "shadeShift": "High-Luster Pearl White",
-      "beforeImg": "assets/sdo/split-veneers-before.webp",
-      "afterImg": "assets/sdo/split-veneers-after.webp",
-      "descEn": "Ultra-thin porcelain veneers correcting incisal edge wear, anterior gaps (diastema), and smile symmetry.",
-      "descAr": "عدسات خزفية فائقة الدقة تعالج تآكل أطراف الأسنان وتغلق الفراغات الأمامية مع تبييض دائم جذاب."
     },
     {
       "id": "case-cleaning-1",
@@ -3402,7 +3511,7 @@
         id: "cosmetic-dentistry",
         suiteNum: "03",
         indexBadge: "01",
-        image: "assets/services/service-veneers.webp",
+        image: "assets/Cosmetic Dentistry & Hollywood Smile.jpg",
         titleEn: "Cosmetic Dentistry & Hollywood Smile",
         titleAr: "طب الأسنان التجميلي وابتسامة هوليوود",
         badgeEn: "Hollywood Smile Specialists",
@@ -3426,7 +3535,7 @@
         id: "orthodontics",
         suiteNum: "01",
         indexBadge: "02",
-        image: "assets/services/service-ortho-implants.webp",
+        image: "assets/Orthodontics & Dentofacial Alignment.jpg",
         titleEn: "Orthodontics & Clear Aligners Studio",
         titleAr: "تقويم الأسنان والتقويم الشفاف (إنفزلاين)",
         badgeEn: "Face-Driven Orthodontics",
@@ -3450,7 +3559,7 @@
         id: "dental-implants",
         suiteNum: "06",
         indexBadge: "03",
-        image: "assets/sdo/split-implants-after.webp",
+        image: "assets/Dental Implants & Bone Reconstruction.jpg",
         titleEn: "Dental Implants & Bone Reconstruction",
         titleAr: "زراعة الأسنان الدائمة وترميم العظم",
         badgeEn: "VIP Chauffeur & Guided Surgery",
@@ -3474,7 +3583,7 @@
         id: "root-canal",
         suiteNum: "07",
         indexBadge: "04",
-        image: "assets/services/service-preventive.webp",
+        image: "assets/Micro-Endodontics.jpg",
         titleEn: "Micro-Endodontics & 6-Step Hygiene",
         titleAr: "علاج العصب المجهري وتنظيف الـ 6 خطوات",
         badgeEn: "100% Painless Protocol",
@@ -4160,39 +4269,45 @@
 
       // 2. Crystal Entrance Hero Texts & Re-trigger Dual-Side Animation
       const leftCol = document.getElementById('crystalLeftCol');
-      const rightCol = document.getElementById('crystalRightCol');
       const toothCol = document.getElementById('crystalToothCol');
 
-      if (leftCol && rightCol && toothCol) {
+      if (leftCol && toothCol) {
         leftCol.classList.remove('crystal-anim-left');
-        rightCol.classList.remove('crystal-anim-right');
         toothCol.classList.remove('crystal-anim-molar-zoom');
 
         void leftCol.offsetWidth;
 
         leftCol.classList.add('crystal-anim-left');
-        rightCol.classList.add('crystal-anim-right');
         toothCol.classList.add('crystal-anim-molar-zoom');
 
         const leftHead = document.getElementById('crystalLeftHeadline');
         if (leftHead) leftHead.innerHTML = t(
-          'Not all smiles<br />need fixing, some<br />need vision',
-          'ليست كل الابتسامات<br />بحاجة إلى علاج، بعضها<br />يحتاج إلى رؤية'
+          'Your Trusted Dental Care.<br />Best Teeth <span class="text-[#0070D2]">Result Provider.</span>',
+          'رعاية أسنان موثوقة.<br />أفضل النتائج <span class="text-[#0070D2]">لابتسامتك.</span>'
         );
         const leftSub = document.getElementById('crystalLeftSubtitle');
         if (leftSub) leftSub.textContent = t(
-          "We're a premium orthodontic and aesthetic studio crafting confident smiles for those who settle for nothing ordinary.",
-          'استوديو تخصصي متقدم في تقويم وتجميل الأسنان يصنع ابتسامات واثقة لأولئك الذين لا يرضون بغير التميز والكمال.'
+          'We listen first, plan with precision, and deliver gentle, comprehensive dental care tailored to your smile and your comfort.',
+          'نستمع إليك أولاً، نخطط بدقة فائقة، ونقدم رعاية أسنان لطيفة وشاملة مصممة خصيصاً لابتسامتك وراحتك.'
         );
-        const rightHead = document.getElementById('crystalRightHeadline');
-        if (rightHead) rightHead.innerHTML = t(
-          'Luxury care<br />made personal',
-          'رعاية فاخرة<br />بلمسة شخصية'
-        );
-        const schedBtn = document.getElementById('crystalScheduleBtnText');
-        if (schedBtn) schedBtn.textContent = t('Schedule a visit', 'احجز موعد استشارتك');
-        const watermark = document.getElementById('crystalWatermark');
-        if (watermark) watermark.textContent = t('SDO CLINIC • SOFT. DEFINED.', 'مركز SDO التخصصي • دقة متناهية');
+
+        const primaryCta = document.getElementById('heroPrimaryCtaText');
+        if (primaryCta) primaryCta.textContent = t('Book Your Consultation', 'احجز استشارتك');
+
+        const secondaryCta = document.getElementById('heroSecondaryCtaText');
+        if (secondaryCta) secondaryCta.textContent = t('Explore Smile Gallery', 'استكشف معرض الابتسامات');
+
+        const locMeta = document.getElementById('heroLocationMetaText');
+        if (locMeta) locMeta.textContent = t('Al Mushrif, Abu Dhabi', 'المشرف، أبوظبي');
+
+        const subMeta = document.getElementById('heroSubMetaText');
+        if (subMeta) subMeta.textContent = t('3D Digital Smile Architecture', 'هندسة الابتسامة الرقمية ثلاثية الأبعاد');
+
+        const badge1 = document.getElementById('heroBadge1Text');
+        if (badge1) badge1.textContent = t('Meet SDO Experts', 'نخبة استشاريي SDO');
+
+        const badge2 = document.getElementById('heroBadge2Title');
+        if (badge2) badge2.textContent = t('Bespoke Aesthetics', 'تجميل متقن');
       }
 
       // 3. Philosophy Hero & Integrated Telemetry Benchmarks
@@ -4223,9 +4338,9 @@
         'الإشراف العام • مؤشرات الجودة السريرية الموثقة'
       );
       const b1Title = document.getElementById('bench1Title');
-      if (b1Title) b1Title.textContent = t('Verified Google Rating (5/5 = 100%)', 'تقييم جوجل الموثق (5/5 = 100%)');
+      if (b1Title) b1Title.textContent = t('Verified Google Rating (4.98 / 5.0)', 'تقييم جوجل الموثق (4.98 / 5.0)');
       const b1Sub = document.getElementById('bench1Sub');
-      if (b1Sub) b1Sub.textContent = t('5 Rectangular Pillars = 100% Satisfaction', '5 مستطيلات مكتملة = رضا المراجعين 100%');
+      if (b1Sub) b1Sub.textContent = t('4.98 ★ Average Patient Satisfaction', '4.98 ★ متوسط رضا المراجعين');
       const b2Unit = document.getElementById('bench2Unit');
       if (b2Unit) b2Unit.textContent = t('Years', 'عاماً');
       const b2Title = document.getElementById('bench2Title');
@@ -4427,7 +4542,7 @@
               </div>
 
               <!-- TOP FLOATING BAR: Rating Badge Only (No specification covering doctor head) -->
-              <div class="relative z-30 p-4 flex items-center justify-end">
+              <div class="relative z-30 p-3 sm:p-4 flex items-center justify-end">
                 <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/80 text-xs font-bold text-[#0F2537] shadow-sm">
                   <span class="text-amber-500 text-xs">★</span>
                   <span>${profile.rating}</span>
@@ -4435,33 +4550,33 @@
               </div>
 
               <!-- INITIAL RESTING CARD CONTENT -->
-              <div class="initial-info absolute inset-x-0 bottom-0 z-10 p-6 flex flex-col justify-end">
-                <div class="flex items-center gap-2 text-xs font-semibold text-sky-300 uppercase tracking-widest mb-1">
+              <div class="initial-info absolute inset-x-0 bottom-0 z-10 flex flex-col justify-end">
+                <div class="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-semibold text-sky-300 uppercase tracking-widest mb-1 truncate">
                   <span>⚡</span>
                   <span>${t(doc.experienceYears, doc.experienceAr)}</span>
                   <span class="text-white/40">•</span>
                   <span class="text-white/80 truncate">${t(doc.branchBadgeEn, doc.branchBadgeAr)}</span>
                 </div>
 
-                <h3 class="text-2xl sm:text-3xl font-bold uppercase text-white tracking-wide leading-tight">
+                <h3 class="text-lg sm:text-2xl font-bold uppercase text-white tracking-wide leading-tight line-clamp-2">
                   ${docName}
                 </h3>
 
                 <!-- Quick Preview Bar -->
-                <div class="mt-4 pt-3.5 border-t border-white/15 flex items-center justify-between">
-                  <div class="flex items-center gap-3 text-xs text-slate-300">
-                    <span class="flex items-center gap-1">
+                <div class="mt-2.5 sm:mt-4 pt-2.5 sm:pt-3.5 border-t border-white/15 flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-2 sm:gap-3 text-[10.5px] sm:text-xs text-slate-300 shrink-0">
+                    <span class="flex items-center gap-1 whitespace-nowrap">
                       <span class="text-sky-300 font-bold">🎓</span>
                       <b>${quals.length}</b> ${t('Certs', 'شهادات')}
                     </span>
-                    <span class="flex items-center gap-1">
+                    <span class="flex items-center gap-1 whitespace-nowrap">
                       <span class="text-sky-300 font-bold">🔬</span>
                       <b>${specs.length}</b> ${t('Specialties', 'إجراء')}
                     </span>
                   </div>
 
                   <button type="button" onclick="toggleDoctorDrawer(event, '${doc.id}')"
-                          class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-sky-300 hover:text-white transition cursor-pointer">
+                          class="inline-flex items-center gap-1 text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-sky-300 hover:text-white transition cursor-pointer shrink-0 whitespace-nowrap">
                     <span>${t('More Details', 'التفاصيل')}</span>
                     <span class="rtl:rotate-180">&rarr;</span>
                   </button>
@@ -4476,46 +4591,46 @@
                 </button>
 
                 <!-- Stagger 1: Department & Experience -->
-                <div class="stagger-item stagger-1 mb-2">
-                  <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-sky-300 bg-sky-500/15 border border-sky-400/30 px-2.5 py-0.5 rounded-md mb-1.5">
+                <div class="stagger-item stagger-1 mb-1.5 sm:mb-2">
+                  <span class="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-sky-300 bg-sky-500/15 border border-sky-400/30 px-2 py-0.5 rounded-md mb-1 sm:mb-1.5">
                     ${docRole}
                   </span>
-                  <h4 class="text-xl sm:text-2xl font-bold text-white uppercase leading-tight">
+                  <h4 class="text-lg sm:text-2xl font-bold text-white uppercase leading-tight">
                     ${docName}
                   </h4>
-                  <p class="text-slate-300 text-xs mt-1 leading-relaxed line-clamp-2">
+                  <p class="text-slate-300 text-[11px] sm:text-xs mt-1 leading-relaxed line-clamp-2">
                     ${docBio}
                   </p>
                 </div>
 
                 <!-- Stagger 2: Three Clinical Highlights -->
-                <div class="stagger-item stagger-2 grid grid-cols-3 gap-2 py-3 border-y border-white/15 my-2">
-                  <div class="text-center p-1.5 rounded-lg bg-white/5 border border-white/5">
-                    <p class="text-sky-300 font-mono font-bold text-sm">${profile.metrics.p1}</p>
-                    <p class="text-[10px] text-slate-300 uppercase tracking-tight truncate mt-0.5">${t(profile.metrics.l1En, profile.metrics.l1Ar)}</p>
+                <div class="stagger-item stagger-2 grid grid-cols-3 gap-1.5 sm:gap-2 py-2 sm:py-2.5 border-y border-white/15 my-1.5 sm:my-2">
+                  <div class="text-center p-1 sm:p-1.5 rounded-lg bg-white/5 border border-white/5">
+                    <p class="text-sky-300 font-mono font-bold text-xs sm:text-sm">${profile.metrics.p1}</p>
+                    <p class="text-[9px] sm:text-[10px] text-slate-300 uppercase tracking-tight truncate mt-0.5">${t(profile.metrics.l1En, profile.metrics.l1Ar)}</p>
                   </div>
-                  <div class="text-center p-1.5 rounded-lg bg-white/5 border border-white/5">
-                    <p class="text-sky-300 font-mono font-bold text-sm">${profile.metrics.p2}</p>
-                    <p class="text-[10px] text-slate-300 uppercase tracking-tight truncate mt-0.5">${t(profile.metrics.l2En, profile.metrics.l2Ar)}</p>
+                  <div class="text-center p-1 sm:p-1.5 rounded-lg bg-white/5 border border-white/5">
+                    <p class="text-sky-300 font-mono font-bold text-xs sm:text-sm">${profile.metrics.p2}</p>
+                    <p class="text-[9px] sm:text-[10px] text-slate-300 uppercase tracking-tight truncate mt-0.5">${t(profile.metrics.l2En, profile.metrics.l2Ar)}</p>
                   </div>
-                  <div class="text-center p-1.5 rounded-lg bg-white/5 border border-white/5">
-                    <p class="text-sky-300 font-mono font-bold text-sm">${profile.metrics.p3}</p>
-                    <p class="text-[10px] text-slate-300 uppercase tracking-tight truncate mt-0.5">${t(profile.metrics.l3En, profile.metrics.l3Ar)}</p>
+                  <div class="text-center p-1 sm:p-1.5 rounded-lg bg-white/5 border border-white/5">
+                    <p class="text-sky-300 font-mono font-bold text-xs sm:text-sm">${profile.metrics.p3}</p>
+                    <p class="text-[9px] sm:text-[10px] text-slate-300 uppercase tracking-tight truncate mt-0.5">${t(profile.metrics.l3En, profile.metrics.l3Ar)}</p>
                   </div>
                 </div>
 
                 <!-- Stagger 3: Action Buttons (Booking + Dossier) -->
-                <div class="stagger-item stagger-3 flex flex-col gap-2 mt-1">
+                <div class="stagger-item stagger-3 flex flex-col gap-1.5 sm:gap-2 mt-1">
                   <button type="button"
                           onclick="openProductionBookingModal({ doctorId: '${doc.id}' })"
-                          class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#0070D2] to-[#38BDF8] hover:from-[#005bb5] hover:to-[#0284c7] text-white font-bold text-xs uppercase tracking-wider transition duration-200 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                          class="w-full py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl bg-gradient-to-r from-[#0070D2] to-[#38BDF8] hover:from-[#005bb5] hover:to-[#0284c7] text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider transition duration-200 shadow-lg flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer">
                     <span>📅</span>
                     <span>${t('Book Doctor', 'حجز استشارة')}</span>
                   </button>
 
                   <button type="button"
                           onclick="openDoctorDossierModal('${doc.id}')"
-                          class="w-full py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-slate-200 font-semibold text-[11px] uppercase tracking-wider transition flex items-center justify-center gap-1.5 cursor-pointer">
+                          class="w-full py-1.5 sm:py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-slate-200 font-semibold text-[10px] sm:text-[11px] uppercase tracking-wider transition flex items-center justify-center gap-1.5 cursor-pointer">
                     <span>📋</span>
                     <span>${t('About Doctor', 'عن الطبيب')}</span>
                   </button>
@@ -4544,8 +4659,15 @@
 
       const isMobile = window.innerWidth < 640;
       const isTablet = window.innerWidth >= 640 && window.innerWidth < 1024;
-      const spreadX = isMobile ? 180 : (isTablet ? 290 : 380);
-      const farSpreadX = isMobile ? 320 : (isTablet ? 540 : 690);
+      const sampleSlot = slots[0];
+      const slotW = sampleSlot && sampleSlot.offsetWidth > 0 ? sampleSlot.offsetWidth : (isMobile ? 260 : 360);
+
+      // Dynamically calculate horizontal spread based on rendered card width
+      const spreadX = isMobile
+        ? Math.min(180, Math.round(slotW * 0.65))
+        : (isTablet ? Math.round(slotW * 0.88) : Math.round(slotW * 1.05));
+      const farSpreadX = Math.round(spreadX * 1.82);
+      const centerTz = isMobile ? 75 : Math.min(120, Math.round(slotW * 0.35));
 
       slots.forEach((slot) => {
         const idx = Number(slot.dataset.slotIndex);
@@ -4563,9 +4685,9 @@
         if (offset === 0) {
           // Center Active Card
           tx = dragOffsetPx * 0.85;
-          tz = 120;
+          tz = centerTz;
           ry = (dragOffsetPx / 350) * -12;
-          sc = isMobile ? 1.02 : 1.08;
+          sc = isMobile ? 1.02 : 1.06;
           op = 1;
           zi = 30;
           slot.className = 'doctor-3d-slot is-center';
@@ -5103,9 +5225,6 @@
       // Branch Name and Description
       const nameEl = document.getElementById('locModalBranchName');
       if (nameEl) nameEl.textContent = t(br.nameEn, br.nameAr);
-
-      const descEl = document.getElementById('locModalBranchDesc');
-      if (descEl) descEl.textContent = t(br.descriptionEn, br.descriptionAr);
 
       // Amenities Pills
       const pillsContainer = document.getElementById('locModalPills');
