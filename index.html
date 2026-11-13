@@ -1334,30 +1334,35 @@
             </div>
           </div>
 
-          <!-- Right Column: Doctors Cutout Image, Orbital Concentric Rings & Floating Badges -->
-          <div id="crystalToothCol" class="lg:col-span-5 xl:col-span-6 flex items-center justify-center relative min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] crystal-anim-molar-zoom">
-            <!-- Concentric Architectural Orbital Rings Behind the Doctors -->
+          <!-- Right Column: Circular Doctor Frame with Concentric Rings & Floating Badges -->
+          <div id="crystalToothCol" class="lg:col-span-5 xl:col-span-6 flex items-center justify-center relative min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] crystal-anim-molar-zoom select-none">
+            
+            <!-- Concentric Architectural Orbital Rings Behind the Circle -->
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
               <!-- Outer Ring -->
-              <div class="w-[460px] h-[460px] sm:w-[520px] sm:h-[520px] rounded-full border border-sky-200/50 absolute"></div>
+              <div class="w-[420px] h-[420px] xs:w-[460px] xs:h-[460px] sm:w-[540px] sm:h-[540px] lg:w-[600px] lg:h-[600px] rounded-full border border-sky-200/50 absolute"></div>
               <!-- Middle Dashed Ring -->
-              <div class="w-[340px] h-[340px] sm:w-[390px] sm:h-[390px] rounded-full border border-sky-300/35 border-dashed absolute"></div>
-              <!-- Inner Ring with Soft Radial Gradient -->
-              <div class="w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] rounded-full border border-sky-400/25 bg-[radial-gradient(circle,rgba(56,189,248,0.2)_0%,rgba(224,242,254,0.35)_45%,transparent_70%)] absolute"></div>
+              <div class="w-[340px] h-[340px] xs:w-[380px] xs:h-[380px] sm:w-[450px] sm:h-[450px] lg:w-[510px] lg:h-[510px] rounded-full border border-sky-300/35 border-dashed absolute"></div>
+              <!-- Inner Ring with Soft Radial Sky Aura -->
+              <div class="w-[280px] h-[280px] xs:w-[320px] xs:h-[320px] sm:w-[390px] sm:h-[390px] lg:w-[450px] lg:h-[450px] rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.22)_0%,rgba(224,242,254,0.35)_45%,transparent_70%)] absolute pointer-events-none"></div>
               <!-- Subtle Crosshairs -->
-              <div class="w-[500px] sm:w-[560px] h-px bg-gradient-to-r from-transparent via-sky-300/30 to-transparent absolute"></div>
-              <div class="h-[500px] sm:h-[560px] w-px bg-gradient-to-b from-transparent via-sky-300/30 to-transparent absolute"></div>
+              <div class="w-[480px] sm:w-[580px] lg:w-[650px] h-px bg-gradient-to-r from-transparent via-sky-300/30 to-transparent absolute"></div>
+              <div class="h-[480px] sm:h-[580px] lg:h-[650px] w-px bg-gradient-to-b from-transparent via-sky-300/30 to-transparent absolute"></div>
             </div>
 
-            <!-- Group Photo of Specialists Staff (dr.png) -->
-            <div class="relative w-full max-w-[520px] lg:max-w-[560px] flex items-end justify-center">
-              <img src="assets/dr.png"
-                   alt="SDO Specialists Faculty Team"
-                   onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/assets/dr.png';}"
-                   class="relative z-10 w-full h-auto object-contain drop-shadow-[0_20px_35px_rgba(15,37,55,0.14)] pointer-events-none select-none transition-transform duration-700 hover:scale-[1.01]" />
+            <!-- Circular Doctor Frame & Badges Group -->
+            <div class="relative flex items-center justify-center">
+              
+              <!-- Circular Avatar Frame (Crops doctors image into perfect luxury circle) -->
+              <div class="relative w-[280px] h-[280px] xs:w-[330px] xs:h-[330px] sm:w-[400px] sm:h-[400px] lg:w-[460px] lg:h-[460px] xl:w-[490px] xl:h-[490px] rounded-full overflow-hidden bg-gradient-to-b from-sky-50/40 via-white to-sky-50/20 border border-sky-200/70 shadow-[0_20px_50px_rgba(15,37,55,0.12)] flex items-end justify-center">
+                <img src="assets/dr.png"
+                     alt="SDO Specialists Faculty Team"
+                     onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='./public/assets/dr.png';}"
+                     class="w-full h-full object-cover object-[50%_8%] select-none pointer-events-none transition-transform duration-700 hover:scale-[1.03]" />
+              </div>
 
               <!-- Floating Badge 1: Top Right "Meet SDO Experts" -->
-              <div class="absolute top-4 sm:top-8 end-1 sm:end-3 z-20 bg-white/90 backdrop-blur-md border border-white/80 shadow-[0_12px_28px_rgba(15,37,55,0.12)] rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 flex items-center gap-2 transform hover:-translate-y-0.5 transition-transform">
+              <div class="absolute top-2 -end-2 sm:top-6 sm:-end-4 lg:top-8 lg:-end-3 z-20 bg-white/95 backdrop-blur-md border border-white/90 shadow-[0_12px_28px_rgba(15,37,55,0.12)] rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 flex items-center gap-2 transform hover:-translate-y-0.5 transition-transform">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
                 <span id="heroBadge1Text" class="text-xs sm:text-[13px] font-bold text-[#0F2537] whitespace-nowrap">
                   Meet SDO Experts
@@ -1365,7 +1370,7 @@
               </div>
 
               <!-- Floating Badge 2: Bottom Left "Bespoke Aesthetics ★ 4.9" -->
-              <div class="absolute bottom-8 sm:bottom-12 start-0 sm:start-2 z-20 bg-white/95 backdrop-blur-md border border-white/80 shadow-[0_16px_36px_rgba(15,37,55,0.14)] rounded-2xl px-4 py-2.5 sm:px-4.5 sm:py-3 flex flex-col gap-0.5 transform hover:-translate-y-0.5 transition-transform">
+              <div class="absolute bottom-2 -start-2 sm:bottom-6 sm:-start-5 lg:bottom-8 lg:-start-6 z-20 bg-white/95 backdrop-blur-md border border-white/90 shadow-[0_16px_36px_rgba(15,37,55,0.14)] rounded-2xl px-4 py-2 sm:px-4.5 sm:py-2.5 flex flex-col gap-0.5 transform hover:-translate-y-0.5 transition-transform">
                 <div class="flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#0F2537] whitespace-nowrap">
                   <svg class="w-3.5 h-3.5 text-[#0070D2]" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z"/>
@@ -1377,7 +1382,9 @@
                   <span class="text-[#0F2537]">4.9</span>
                 </div>
               </div>
+
             </div>
+
           </div>
 
         </div>
