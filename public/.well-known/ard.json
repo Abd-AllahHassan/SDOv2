@@ -1,0 +1,20 @@
+{
+  "@context": "https://agenticresourcediscovery.org/contexts/v0.91/context.jsonld",
+  "entries": [
+    {
+      "identifier": "urn:air:sdov2.vercel.app:clinic:sdo-center",
+      "displayName": "Specialized Dental & Orthodontic Center (SDO)",
+      "type": "application/ld+json",
+      "url": "https://sdov2.vercel.app/llms.txt",
+      "representativeQueries": [
+        "Book an orthodontist or dental implant consultation at SDO Center Abu Dhabi",
+        "View SDO Center specialist doctors and clinical suites",
+        "Check SDO Center branch locations and opening hours in Al Mushrif, Al Markaziyah, and Al Sila"
+      ],
+      "trustManifest": {
+        "identity": "sdov2.vercel.app"
+      }
+    }
+  ]
+}
+

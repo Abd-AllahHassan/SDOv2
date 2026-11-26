@@ -1,0 +1,20 @@
+# Specialized Dental & Orthodontic Center (SDO)
+
+> SDO Center is a premier multi-branch dental and orthodontic clinic in Abu Dhabi and Al Dhafra (UAE), offering 10 specialized clinical suites, board-certified specialists, 3D Medit i700 digital smile scanning, guided dental implants, clear aligners (Invisalign), microscopic endodontics, and gentle pediatric care. Open daily 9:00 AM – 9:00 PM.
+
+## Core Pages & Interactive Sections
+
+- [Entrance & Consultation Booking](https://sdov2.vercel.app/#crystalEntranceHero): Overview of SDO Center, 3D Digital Smile Architecture, and appointment scheduling.
+- [Architectural Smile Philosophy & Benchmarks](https://sdov2.vercel.app/#about): 4.98★ verified patient satisfaction rating, 20+ years medical leadership, and 10 clinical suites.
+- [10 Specialized Clinical Suites](https://sdov2.vercel.app/#services): Detailed protocols for Orthodontics, Clear Aligners Studio, Cosmetic Veneers, Cold Laser Whitening, Periodontics, Dental Implants, Micro-Endodontics, Restorative Prosthetics, 6-Step Hygiene, and Pediatric Dentistry.
+- [Board-Certified Specialists](https://sdov2.vercel.app/#specialists): Profiles of Dr. Snehal Amberkar, Dr. Abhishek Parashar, Dr. Marwa Mohamed Soliman, Dr. Fowzaan Feroz, Dr. Mona Mohamed, and Dr. Aya Atef Saad.
+- [Smile Transformations & Reviews](https://sdov2.vercel.app/#transformations): Documented clinical before-and-after cases and verified Google patient reviews.
+- [Clinic Discovery Manifest (ARD)](https://sdov2.vercel.app/.well-known/ard.json): Machine-readable Agentic Resource Discovery manifest for SDO Center.
+
+## Branches & Contact
+
+- Al Mushrif Main Center, Abu Dhabi: +971 02 443 9688
+- Cosmopolitan Medical Centre & Pharmacy, Al Markaziyah (Electra Road), Abu Dhabi: +971 02 631 4422
+- Rahmath Sila Clinic, Bayah Al Sila, Al Dhafra Region: +971 02 872 4999
+- WhatsApp Concierge: +971 50 155 6260 | Email: info@sdocenter.com
+
